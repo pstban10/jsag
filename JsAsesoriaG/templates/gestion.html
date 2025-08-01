@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gestión y Operaciones | JS Asesoría Gastronómica{% endblock %}
+
+{% block content %}
+<section class="section-operaciones py-5">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 order-lg-2">
+                <h1 class="font-heading mb-4">Gestión y Operaciones</h1>
+                <p class="lead">Transformamos el caos operativo en sistemas eficientes y replicables. Desde la apertura hasta el cierre, cada paso puede ser optimizado para mejorar la experiencia del cliente y el rendimiento del equipo.</p>
+            </div>
+            <div class="col-lg-6 order-lg-1 text-center">
+                <img src="{% static 'img/rest1.jpg' %}" alt="Gestión de operaciones gastronómicas" class="imgRest img-fluid rounded shadow">
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-kanban display-4 text-gold mb-3"></i>
+                        <h5 class="font-heading">Procesos Claros</h5>
+                        <p>Documentamos y estandarizamos los procesos clave para reducir errores, delegar con confianza y facilitar entrenamientos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-people-fill display-4 text-gold mb-3"></i>
+                        <h5 class="font-heading">Gestión de Equipos</h5>
+                        <p>Definimos roles, responsabilidades y dinámicas de trabajo para mejorar la comunicación y la motivación del personal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <i class="bi bi-clock-history display-4 text-gold mb-3"></i>
+                        <h5 class="font-heading">Optimización de Turnos</h5>
+                        <p>Diseñamos cronogramas que equilibran eficiencia operativa, descanso del equipo y calidad de servicio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <button type="button" class="btn btn-gold btn-lg" data-bs-toggle="modal" data-bs-target="#contactModal">
+                Quiero optimizar mi operación
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Finanzas y Rentabilidad | Asesoría Gastronómica{% endblock %}
+
+{% block content %}
+<section class="section-finanzas py-5">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="{% static 'img/rest2.jpg' %}" alt="Optimización financiera restaurante" class="imgRest img-fluid rounded shadow">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="font-heading mb-3">Finanzas y Rentabilidad</h1>
+        <p class="lead">Transformamos tus números en decisiones inteligentes.</p>
+        <p>Identificamos fugas de dinero, optimizamos tus costos y diseñamos una estructura de precios y control que aumente tu rentabilidad sin comprometer la experiencia del cliente.</p>
+        <p>Si no estás seguro de cuánto ganas con cada plato o si tu restaurante depende del volumen para sobrevivir, esta área es para ti.</p>
+        <a href="#contactModal" data-bs-toggle="modal" class="btn btn-gold mt-3">Quiero mejorar mis finanzas</a>
+      </div>
+    </div>
+
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center">
+            <i class="bi bi-graph-up-arrow display-4 text-gold mb-3"></i>
+            <h5 class="card-title font-heading">Análisis de Rentabilidad</h5>
+            <p class="card-text">Detectamos qué platos son rentables, cuáles pierden dinero y cómo optimizar tu mix de ventas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center">
+            <i class="bi bi-wallet2 display-4 text-gold mb-3"></i>
+            <h5 class="card-title font-heading">Gestión de Costos</h5>
+            <p class="card-text">Estrategias claras para reducir costos sin sacrificar calidad. Desde proveedores hasta desperdicio.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body text-center">
+            <i class="bi bi-cash-stack display-4 text-gold mb-3"></i>
+            <h5 class="card-title font-heading">Proyecciones y Presupuestos</h5>
+            <p class="card-text">Creamos presupuestos realistas y metas financieras que puedas seguir y medir fácilmente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

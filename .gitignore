@@ -1,0 +1,26 @@
+# Entornos virtuales
+env/
+venv/
+../env/
+
+# Archivos de configuración sensibles
+.env
+client_secret_google.json
+
+# Archivos generados por Django collectstatic
+/staticfiles/
+staticfiles/
+
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+
+# Base de datos local
+db.sqlite3
+
+# Archivos de logs
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

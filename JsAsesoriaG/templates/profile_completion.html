@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block title %}Completa tu Perfil{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-7">
+            <div class="card bg-dark text-white shadow-lg" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+
+                    <h2 class="font-heading mb-3">Un último paso...</h2>
+                    <p class="text-white-50 mb-4">
+                        {% if not user_type %}
+                            ¡Bienvenido! Para poder ofrecerte una experiencia personalizada, por favor selecciona el tipo de perfil que mejor te describe.
+                        {% else %}
+                            Ahora, por favor completa los detalles de tu perfil de {{ user_type }}.
+                        {% endif %}
+                    </p>
+
+                    <form method="POST" enctype="multipart/form-data" class="text-start">
+                        {% csrf_token %}
+                        
+                        {{ form|crispy }}
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button class="btn btn-gold btn-lg" type="submit">Guardar y Continuar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

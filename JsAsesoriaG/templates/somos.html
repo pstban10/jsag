@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}¿Quiénes somos? | Asesoría Gastronómica{% endblock %}
+
+{% block content %}
+<section class="section-nosotros py-5">
+  <div class="container">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="{% static 'img/equipo-cocina.jpg' %}" alt="Equipo asesoramiento gastronómico" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="font-heading mb-3">¿Quiénes somos?</h1>
+        <p class="lead">Un equipo de profesionales que trabaja desde la raíz para que tu negocio crezca con bases sólidas.</p>
+        <p>Nos involucramos desde el primer momento, analizando el personal, los espacios, los productos y todo lo que impacta en el servicio. Creamos soluciones a medida y trabajamos codo a codo con tu equipo para lograr resultados visibles en tiempo récord.</p>
+        <p>Porque entendemos que tu proyecto no es uno más, y tu inversión merece ser cuidada como si fuera nuestra.</p>
+        <a href="#contactModal" data-bs-toggle="modal" class="btn btn-gold mt-3">Conocé cómo trabajamos</a>
+      </div>
+    </div>
+
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <div class="card-body">
+            <i class="bi bi-people-fill display-4 text-gold mb-3"></i>
+            <h5 class="card-title font-heading">Un equipo diverso</h5>
+            <p class="card-text">Chefs, administrativos, asesores legales, vendedores y más: cubrimos todos los frentes del negocio gastronómico.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <div class="card-body">
+            <i class="bi bi-hand-thumbs-up display-4 text-gold mb-3"></i>
+            <h5 class="card-title font-heading">Confianza y honestidad</h5>
+            <p class="card-text">Nos comprometemos de verdad. No vendemos humo. Generamos vínculos basados en transparencia y trabajo en equipo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0 text-center">
+          <div class="card-body">
+            <i class="bi bi-person-heart display-4 text-gold mb-3"></i>
+            <h5 class="card-title font-heading">Enfoque humano y personalizado</h5>
+            <p class="card-text">Nos adaptamos a cada realidad. No usamos fórmulas genéricas, creamos soluciones pensadas para vos y tu gente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

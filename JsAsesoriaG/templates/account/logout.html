@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Cerrar Sesión" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card bg-dark text-white shadow-lg" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+
+                    <h2 class="font-heading mb-4">{% trans "Cerrar Sesión" %}</h2>
+
+                    <p class="text-white-50 mb-4">{% trans "Are you sure you want to sign out?" %}</p>
+
+                    <form method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                        {% endif %}
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-gold" type="submit">{% trans "Confirmar y Salir" %}</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

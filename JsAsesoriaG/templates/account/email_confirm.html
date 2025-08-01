@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block title %}{% trans "Confirmar Email" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card bg-dark text-white shadow-lg" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+
+                    <h2 class="font-heading mb-4">{% trans "Confirmar Dirección de Email" %}</h2>
+
+                    {% if confirmation %}
+                        {% user_display confirmation.email_address.user as user_display %}
+                        {% if can_confirm %}
+                            <p>
+                                {% blocktrans with confirmation.email_address.email as email %}Por favor, confirma que <a href="mailto:{{ email }}">{{ email }}</a> es tu dirección de correo para el usuario {{ user_display }}.{% endblocktrans %}
+                            </p>
+                            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                                {% csrf_token %}
+                                <div class="d-grid gap-2 mt-4">
+                                    <button type="submit" class="btn btn-gold">{% trans 'Confirmar' %}</button>
+                                </div>
+                            </form>
+                        {% else %}
+                            <p class="text-warning">
+                                {% blocktrans %}No se puede confirmar {{ email }} porque ya está verificado por una cuenta diferente.{% endblocktrans %}
+                            </p>
+                        {% endif %}
+                    {% else %}
+                        {% url 'account_email' as email_url %}
+                        <p>
+                            {% blocktrans %}Este enlace de confirmación ha expirado o no es válido. Por favor, <a href="{{ email_url }}" class="text-white fw-bold">solicita una nueva confirmación</a>.{% endblocktrans %}
+                        </p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
