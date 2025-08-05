@@ -25,17 +25,52 @@ body {
 
 /* 3. Estilos para el Hero Section */
 .hero {
-    background-color: var(--color-dark);
-    color: #f0f0f0;
-    padding: 8rem 0;
-    text-align: center;
+    position: relative; /* Contenedor principal para posicionamiento absoluto */
+    color: #fff;
+    height: 65vh; /* Altura del hero, ajústala a tu gusto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.hero h1 {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
+#heroCarousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Capa más baja */
+}
+.carousel-item,
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin deformarse */
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Negro con 50% de opacidad. Ajusta este valor para más o menos oscuridad */
+    z-index: 2; /* Por encima del carrusel, debajo del texto */
+}
+.hero-content {
+    position: relative;
+    z-index: 3; /* La capa de texto, por encima de todo */
 }
 
+.hero-content h1 {
+    font-size: 3.8rem; /* Tamaño de fuente grande para impacto */
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar el texto */
+}
+.hero-content .lead {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
 /* 4. Estilos para Botones Personalizados */
 .btn-gold {
     background-color: var(--color-gold);
@@ -203,13 +238,77 @@ h2 {
     height: 25rem;
     width: auto;
 }
+/* ---- Animación de Filmstrip para Escritorio ---- */
 
-/* Responsive: Ajustes para Móviles */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+/* Usamos una media query para aplicar estos estilos solo en pantallas grandes (lg y superiores) */
+@media (min-width: 992px) {
+    
+
+    /* La "ventana" que contendrá la cinta de imágenes */
+    .scrolling-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Oculta todo lo que se salga de la ventana */
+        z-index: 1;
     }
 
+    /* La "cinta" que se mueve */
+    .scrolling-track {
+        /* Usamos variables para fácil configuración */
+        --slide-count: 5; /* IMPORTANTE: El número de imágenes ORIGINALES */
+        --slide-width: 1000px; /* Ancho deseado para cada imagen */
+        --animation-duration: 90s; /* Duración total de la animación */
+
+        display: flex;
+        width: calc(var(--slide-width) * var(--slide-count) * 2); /* Ancho total (imágenes x 2) */
+        height: 100%;
+        animation: scroll var(--animation-duration) linear infinite;
+    }
+
+    /* Cada imagen individual en la cinta */
+    .scrolling-slide {
+        width: var(--slide-width);
+        height: 100%;
+        flex-shrink: 0; /* Evita que las imágenes se encojan */
+    }
+
+    .scrolling-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Mantiene la proporción de la imagen */
+    }
+
+    /* La animación de desplazamiento */
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            /* Mueve la cinta hacia la izquierda por el ancho del set ORIGINAL de imágenes */
+            transform: translateX(calc(var(--slide-width) * var(--slide-count) * -1));
+        }
+    }
+
+    /* Opcional: Pausar la animación al pasar el mouse */
+    .scrolling-wrapper:hover .scrolling-track {
+        animation-play-state: paused;
+    }
+}
+/* Responsive: Ajustes para Móviles */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content .lead {
+        font-size: 1.2rem;
+    }
     h2 {
         font-size: 2.2rem;
     }
