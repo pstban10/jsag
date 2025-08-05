@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Ofertas de Empleo</h1>
+    <div class="list-group">
+        {% for oferta in ofertas %}
+            <a href="{% url 'detalle_oferta' oferta.pk %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ oferta.titulo }}</h5>
+                    <small>{{ oferta.fecha_publicacion|date:"d/m/Y" }}</small>
+                </div>
+                <p class="mb-1">{{ oferta.cliente.nombre_negocio }}</p>
+                <small>Tipo de contrato: {{ oferta.tipo_contrato }}</small>
+            </a>
+        {% empty %}
+            <p>No hay ofertas de empleo disponibles en este momento.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

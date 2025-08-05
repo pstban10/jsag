@@ -18,8 +18,8 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
 # Application definition
 DJANGO_APPS = [
     # panel de admin cheto
-    # 'adminlte3',
-    # 'adminlte3_theme',
+    'adminlte3',
+    'adminlte3_theme',
     # 'jazzmin',
     # lo demas
     'django.contrib.admin',
@@ -32,7 +32,8 @@ DJANGO_APPS = [
 
 ]
 PROJECT_APPS = [
-    'inicio'
+    'inicio',
+    'interacciones'
 ]
 THIRD_PARTY_APPS = [
     'allauth',
@@ -98,6 +99,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'JsAsesoriaG.context_processors.add_login_form_to_context',
+                'inicio.context_processors.user_context',
+                'interacciones.context_processors.unread_notifications_context'
 
             ],
         },

@@ -21,7 +21,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" href="{% static "img/favicon.ico" %}">
@@ -40,31 +42,64 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
+                    {% comment %} barra de navegacion depende del tipo de cuenta {% endcomment %}
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Quiero invertir en gastronomía</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Asesoría Legal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Proveedores VIP</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Banco de CV's</a>
-                        </li>
-                        <li class="nav-item dropdown">
+                        {% if user_type == 'cliente' %}
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'crear_oferta' %}">Crear Oferta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Asesoría Legal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Proveedores VIP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Banco de CV's</a>
+                            </li>
+                        {% elif user_type == 'proveedor' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'proveedor_dashboard' %}">Dashboard Proveedor</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'crear_producto' %}">Publicar Producto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Asesoría Legal</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Banco de CV's</a>
+                            </li>
+                        {% elif user_type == 'postulante' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'postulante_dashboard' %}">Dashboard Postulante</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'lista_ofertas' %}">Ver Ofertas</a>
+                            </li>
+                        {% endif %}
+                        <div class="user-actions">
+                            <div class="dropdown me-2">
+                                <a class="nav-link" href="{% url 'interacciones:vista_chat' %}" id="messagesDropdown" role="button">
+                                    <i class="bi bi-chat-dots-fill"></i>
+                                </a>
+                                <a class="nav-link" href="{% url 'interacciones:lista_notificaciones' %}" id="notificationDropdown" role="button">
+                                    <i class="bi bi-bell-fill"></i>
+                                    {% if unread_notifications_count > 0 %}
+                                        <span class="badge bg-danger rounded-pill">{{ unread_notifications_count }}</span>
+                                    {% endif %}
+                                </a>
+                            </div>
                             <a class="nav-link" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {% comment %} si el perfil no tiene foto de perfil {% endcomment %}
-                                {% if not profile_pic %}
-                                <img src="{% static "img/anonUser.jpg"%}"  class="rounded-circle userImg" alt="Perfil">
-                                {%endif%}
                                 {% if profile_pic %}
-                                    <img src="{{ profile_pic }}" class="rounded-circle userImg" alt="Perfil">
+                                    <img src="{{ profile_pic.url|default:profile_pic }}" class="rounded-circle userImg" alt="Perfil">
+                                {% else %}
+                                    <img src="{% static "img/anonUser.jpg" %}" class="rounded-circle userImg" alt="Perfil">
                                 {% endif %}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Mi Perfil</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form id="logout_form" method="post" action="{% url 'account_logout' %}">
@@ -73,8 +108,7 @@
                                     </form>
                                 </li>
                             </ul>
-                        </li>
-
+                        </div>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{%url "somos"%}">¿Quiénes somos?</a>
@@ -102,13 +136,21 @@
                         </li>
                     {% endif %}
                 </ul>            
-            </div>
-        
-        </div>
-    
+            </div>        
+        </div>    
     </nav>
 </header>
     <main>
+        <div class="container mt-4">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
         {% block content %}
         {% endblock content %}
     </main>

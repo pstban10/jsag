@@ -1,5 +1,7 @@
 from django import forms
-from .models import Profile, Cliente, Proveedor, Postulante
+from .models import Profile, Cliente, Proveedor, Postulante, Producto, OfertaEmpleo, Postulacion
+
+
 
 class ProfileTypeForm(forms.ModelForm):
     class Meta:
@@ -23,3 +25,18 @@ class PostulanteForm(forms.ModelForm):
     class Meta:
         model = Postulante
         fields = ['nombre_completo', 'cuil', 'presentacion', 'cv', 'foto_perfil']
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre', 'descripcion', 'precio', 'imagen']
+
+class OfertaEmpleoForm(forms.ModelForm):
+    class Meta:
+        model = OfertaEmpleo
+        fields = ['titulo', 'descripcion', 'requisitos', 'tipo_contrato', 'activa']
+
+class PostulacionForm(forms.ModelForm):
+    class Meta:
+        model = Postulacion
+        fields = ['mensaje']

@@ -2,7 +2,35 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1>Dashboard de Proveedor</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Dashboard de Proveedor</h1>
+        <a href="{% url 'crear_producto' %}" class="btn btn-primary">Crear Producto</a>
+    </div>
+
     <p>Bienvenido, {{ user.username }}.</p>
+
+    <h2 class="mt-5">Mis Productos</h2>
+    <div class="row">
+        {% for producto in productos %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
+                        <a href="{% url 'editar_producto' producto.pk %}" class="btn btn-sm btn-info">Editar</a>
+                        <a href="{% url 'eliminar_producto' producto.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col">
+                <p>No tienes productos creados.</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

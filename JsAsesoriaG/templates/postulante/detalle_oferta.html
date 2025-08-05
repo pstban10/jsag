@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>{{ oferta.titulo }}</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ oferta.cliente.nombre_negocio }}</h5>
+            <p class="card-text"><strong>Descripción:</strong> {{ oferta.descripcion|linebreaks }}</p>
+            <p class="card-text"><strong>Requisitos:</strong> {{ oferta.requisitos|linebreaks }}</p>
+            <p class="card-text"><strong>Tipo de Contrato:</strong> {{ oferta.tipo_contrato }}</p>
+            <p class="card-text"><small class="text-muted">Publicado el {{ oferta.fecha_publicacion|date:"d/m/Y" }}</small></p>
+
+            {% if postulacion_existente %}
+                <div class="alert alert-success" role="alert">
+                    Ya te has postulado a esta oferta.
+                </div>
+            {% else %}
+                <hr>
+                <h4>Postularse</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary">Enviar Postulación</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

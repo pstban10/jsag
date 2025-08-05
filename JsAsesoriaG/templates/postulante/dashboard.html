@@ -4,5 +4,26 @@
 <div class="container mt-5">
     <h1>Dashboard de Postulante</h1>
     <p>Bienvenido, {{ user.username }}.</p>
+
+    <hr>
+
+    <h2>Mis Postulaciones</h2>
+    {% if postulaciones %}
+        <div class="list-group">
+            {% for postulacion in postulaciones %}
+                <a href="{% url 'detalle_oferta' postulacion.oferta.pk %}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ postulacion.oferta.titulo }}</h5>
+                        <small>{{ postulacion.fecha_postulacion|date:"d/m/Y" }}</small>
+                    </div>
+                    <p class="mb-1">{{ postulacion.oferta.cliente.nombre_negocio }}</p>
+                    <small>Ver detalle de la oferta y estado de la postulación.</small>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aún no te has postulado a ninguna oferta.</p>
+        <a href="{% url 'lista_ofertas' %}" class="btn btn-primary">Ver Ofertas Disponibles</a>
+    {% endif %}
 </div>
 {% endblock %}

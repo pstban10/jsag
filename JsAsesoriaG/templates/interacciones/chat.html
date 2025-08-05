@@ -1,0 +1,164 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}Mis Mensajes{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="row h-100 g-0">
+        <!-- Columna Derecha (Lista de Chats) -->
+        <div class="col-12 col-lg-4 chat-list-column p-3">
+            <h2 class="h4 mb-3">Conversaciones</h2>
+            <div id="chat-list" class="list-group">
+                {% for conv in conversaciones %}
+                    <a href="#" class="list-group-item list-group-item-action chat-list-item" data-conv-id="{{ conv.id }}">
+                        <div class="d-flex align-items-center">
+                            <img src="{% static 'img/anonUser.jpg' %}" class="rounded-circle me-3" style="width: 50px; height: 50px;" alt="Avatar">
+                            <div class="flex-grow-1">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ conv.participantes.all|join:", " }}</h5>
+                                    <small class="text-muted">{{ conv.mensajes.last.fecha_envio|timesince }}</small>
+                                </div>
+                                <p class="mb-1 text-muted text-truncate small">{{ conv.mensajes.last.contenido|default:"Inicia la conversación" }}</p>
+                            </div>
+                        </div>
+                    </a>
+                {% empty %}
+                    <p class="text-center text-muted mt-3">No tienes conversaciones activas.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Columna Izquierda (Visor de Mensajes) -->
+        <div class="col-12 col-lg-8 d-none d-lg-flex flex-column message-view-column">
+            <div id="message-area" class="d-flex flex-column p-3">
+                <!-- Los mensajes se cargarán aquí -->
+                <div class="text-center text-muted h-100 d-flex justify-content-center align-items-center">
+                    <p>Selecciona una conversación para ver los mensajes.</p>
+                </div>
+            </div>
+            <div id="message-form-container" class="p-3 border-top" style="display: none;">
+                <form id="message-form">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" id="message-input" class="form-control" placeholder="Escribe tu mensaje...">
+                        <button class="btn btn-gold" type="submit">Enviar <i class="bi bi-send-fill"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para vista móvil -->
+<div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chatModalLabel">Conversación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-message-area" style="background-color: #e5ddd5;">
+                <!-- Contenido del chat para móvil -->
+            </div>
+            <div class="modal-footer">
+                <form id="modal-message-form" class="w-100">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" id="modal-message-input" class="form-control" placeholder="Escribe tu mensaje...">
+                        <button class="btn btn-gold" type="submit">Enviar <i class="bi bi-send-fill"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chatListItems = document.querySelectorAll('.chat-list-item');
+        const messageArea = document.getElementById('message-area');
+        const messageFormContainer = document.getElementById('message-form-container');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+        let currentConvId = null;
+
+        const chatModal = new bootstrap.Modal(document.getElementById('chatModal'));
+        const modalMessageArea = document.getElementById('modal-message-area');
+        const modalMessageForm = document.getElementById('modal-message-form');
+        const modalMessageInput = document.getElementById('modal-message-input');
+
+        function isMobileView() {
+            return window.innerWidth < 992;
+        }
+
+        async function loadMessages(convId) {
+            currentConvId = convId;
+            const response = await fetch(`/interacciones/chat/${convId}/mensajes/`);
+            const data = await response.json();
+            
+            const messageContent = data.mensajes.map(m => `
+                <div class="d-flex ${m.is_self ? 'justify-content-end' : ''}">
+                    <div class="message-bubble ${m.is_self ? 'is-self' : 'is-other'}">
+                        <p class="mb-0">${m.contenido}</p>
+                        <small class="text-muted d-block text-end">${m.fecha_envio}</small>
+                    </div>
+                </div>
+            `).join('');
+
+            if (isMobileView()) {
+                modalMessageArea.innerHTML = messageContent;
+                chatModal.show();
+            } else {
+                messageArea.innerHTML = messageContent;
+                messageFormContainer.style.display = 'block';
+                // Marcar como activa la conversación actual
+                chatListItems.forEach(i => i.classList.remove('active'));
+                document.querySelector(`.chat-list-item[data-conv-id="${convId}"]`).classList.add('active');
+            }
+            scrollToBottom();
+        }
+
+        async function sendMessage(e, form, input) {
+            e.preventDefault();
+            const contenido = input.value;
+            if (contenido.trim() === '' || !currentConvId) return;
+
+            const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            await fetch(`/interacciones/chat/${currentConvId}/enviar/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': csrfToken
+                },
+                body: `contenido=${encodeURIComponent(contenido)}`
+            });
+
+            input.value = '';
+            loadMessages(currentConvId);
+        }
+
+        function scrollToBottom() {
+            if (isMobileView()) {
+                modalMessageArea.scrollTop = modalMessageArea.scrollHeight;
+            } else {
+                messageArea.scrollTop = messageArea.scrollHeight;
+            }
+        }
+
+        chatListItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const convId = item.dataset.convId;
+                loadMessages(convId);
+            });
+        });
+
+        messageForm.addEventListener('submit', (e) => sendMessage(e, messageForm, messageInput));
+        modalMessageForm.addEventListener('submit', (e) => sendMessage(e, modalMessageForm, modalMessageInput));
+    });
+</script>
+{% endblock %}

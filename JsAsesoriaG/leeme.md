@@ -1,98 +1,39 @@
-Hola, quiero que actúes como asistente experto en desarrollo de backend Django, con especial foco en diseño de modelos, lógica de usuarios y experiencia administrativa personalizada.
-Estoy construyendo una plataforma de asesoramiento gastronómico profesional y necesito implementar un sistema multiusuario con lógica diferenciada por roles.
+### Estado Actual del Proyecto (Checkpoint)
 
-📌 Información general del proyecto
-Plataforma web construida con Django + Bootstrap
+Hola, soy Gemini. He realizado una refactorización significativa del sistema de notificaciones y mensajería para mejorar la modularidad, la experiencia de usuario y la escalabilidad de la plataforma.
 
-Frontend ya avanzado, con foco en consultoría gastronómica
+**Resumen de Cambios Implementados:**
 
-Branding sólido y base de datos ya funcional con autenticación por django-allauth
+1.  **Creación de la App `interacciones`:**
+    *   Se ha creado una nueva app de Django llamada `interacciones` para centralizar toda la lógica de notificaciones y chat.
+    *   Los modelos `Notificacion`, `Conversacion` y `Mensaje` han sido migrados desde la app `inicio` a `interacciones`.
+    *   Se han generado y aplicado las migraciones de base de datos correspondientes para reflejar esta nueva estructura.
 
-Objetivo: brindar servicios, productos y oportunidades laborales a negocios gastronómicos
+2.  **Nuevo Layout con Navegación Lateral (`base2.html`):**
+    *   Se ha creado una nueva plantilla base, `templates/base2.html`, con una barra de navegación lateral fija.
+    *   Este nuevo layout se utiliza exclusivamente para las vistas de la app `interacciones` (Notificaciones y Chat), proporcionando una experiencia de usuario más moderna e inmersiva.
+    *   La barra de navegación es completamente responsive, ocultándose en dispositivos móviles y siendo accesible a través de un botón de menú flotante.
 
-🧑‍💼 Tipos de usuario requeridos:
-1. Cliente
-Puede:
+3.  **Sistema de Notificaciones Mejorado:**
+    *   Se ha creado una nueva vista (`interacciones/notificaciones.html`) que muestra un historial completo de todas las notificaciones del usuario.
+    *   La vista diferencia claramente entre notificaciones leídas y no leídas.
+    *   El icono de campana en la barra de navegación principal ahora redirige a esta nueva página.
 
-Ver perfiles de proveedores y postulantes
+4.  **Nuevo Sistema de Chat:**
+    *   Se ha implementado una nueva interfaz de chat en `interacciones/chat.html` que utiliza el layout de `base2.html`.
+    *   **En Escritorio:** La vista presenta dos columnas. La columna derecha muestra una lista de todas las conversaciones del usuario. Al hacer clic en una conversación, los mensajes correspondientes se cargan dinámicamente en la columna izquierda mediante JavaScript, sin necesidad de recargar la página.
+    *   **En Móvil:** La vista muestra inicialmente solo la lista de conversaciones. Al tocar una conversación, se abre un modal que ocupa la pantalla para mostrar los mensajes y permitir al usuario responder, optimizando el espacio en pantallas pequeñas.
 
-Publicar ofertas de empleo o solicitudes de servicios/productos
+5.  **Refactorización y Limpieza:**
+    *   Se ha eliminado toda la lógica de notificaciones y mensajería de la app `inicio` (modelos, vistas, URLs, plantillas) para evitar duplicidad y mantener el código organizado.
+    *   Se han actualizado las URLs y los procesadores de contexto para que funcionen con la nueva estructura de la app `interacciones`.
+    *   Se han corregido los enlaces en la barra de navegación principal (`base.html`) para que apunten a las nuevas vistas de chat y notificaciones.
 
-Tener un perfil editable (foto, info del negocio)
+---
+### Próximos Pasos
 
-Agregar productos a un carrito
+La nueva arquitectura de interacciones está implementada y funcional. Los próximos pasos recomendados son:
 
-Generar una orden de compra como .txt (no incluye pasarela de pago)
-
-2. Proveedor
-Puede:
-
-Cargar productos y promociones especiales (descuentos por monto o tipo de pago)
-
-Ver órdenes de compra dirigidas a ellos
-
-Ver solicitudes de productos/servicios
-
-Ver perfiles de postulantes
-
-3. Postulante
-Puede:
-
-Cargar CV (.pdf o .docx)
-
-Editar perfil (datos personales, presentación, estudios)
-
-Ver y postularse a ofertas laborales
-
-💬 Funcionalidades compartidas
-Dashboard donde todos los tipos de usuario pueden publicar y responder posteos (tipo "tablero de servicios/comunidad")
-
-Comunicación entre usuarios dentro de la plataforma
-
-Administración de perfiles, imágenes y datos personalizados
-
-Generación de órdenes de compra sin pagos, sólo confirmaciones
-
-🎯 Qué necesito de vos (IA generativa):
-Analizá la estructura de mi proyecto actual y detectá:
-
-Cambios necesarios en modelos (models.py)
-
-Cambios sugeridos en vistas y formularios (views.py, forms.py)
-
-Uso óptimo del sistema de autenticación con roles
-
-Cómo separar lógica de cliente/proveedor/postulante sin duplicar demasiado código
-
-Proponé un plan paso a paso para:
-
-Crear los modelos y relaciones necesarias
-
-Estructurar la base de datos para escalar
-
-Implementar formularios y validaciones
-
-Organizar las vistas y URLs por tipo de usuario
-
-Integrar todo con el panel administrativo (si es útil)
-
-Dame sugerencias técnicas adicionales, como:
-
-Paquetes recomendados (ej: django-roles, django-guardian, django-polymorphic)
-
-Buenas prácticas para manejar permisos, vistas y dashboards según el tipo de usuario
-
-Ideas para optimizar la experiencia UX/UI en el backend
-
-Notificaciones o alertas internas entre usuarios
-
-Si algo no está claro o te falta información, haceme preguntas puntuales para completar el análisis.
-
-🔚 Output esperado:
-🧠 Resumen de acciones necesarias
-
-📋 Lista de tareas ordenadas por prioridad
-
-💡 Recomendaciones específicas (con enlaces a paquetes o prácticas si aplica)
-
-❓ Preguntas clave si algún punto es ambiguo
+*   **Chat en Tiempo Real:** Implementar WebSockets (con Django Channels) o polling para que los mensajes nuevos aparezcan instantáneamente sin que el usuario tenga que recargar.
+*   **Mejorar Avatares:** Reemplazar las imágenes de perfil genéricas en la lista de chats con las fotos de perfil reales de los usuarios.
+*   **Pruebas Exhaustivas:** Realizar pruebas completas del nuevo flujo de notificaciones y chat en diferentes dispositivos.

@@ -2,7 +2,50 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1>Dashboard de Cliente</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Dashboard de Cliente</h1>
+        <a href="{% url 'crear_oferta' %}" class="btn btn-primary">Crear Oferta de Empleo</a>
+    </div>
+
     <p>Bienvenido, {{ user.username }}.</p>
+
+    <div class="row mt-5">
+        <div class="col-md-8">
+            <h2>Mis Ofertas de Empleo</h2>
+            <div class="list-group">
+                {% for oferta in ofertas %}
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ oferta.titulo }}</h5>
+                            <small>{{ oferta.fecha_publicacion|date:"d/m/Y" }}</small>
+                        </div>
+                        <p class="mb-1">{{ oferta.descripcion|truncatewords:30 }}</p>
+                        <small>Tipo de contrato: {{ oferta.tipo_contrato }}</small>
+                        <div class="mt-2">
+                            <a href="{% url 'editar_oferta' oferta.pk %}" class="btn btn-sm btn-info">Editar</a>
+                            <a href="{% url 'eliminar_oferta' oferta.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No has publicado ninguna oferta de empleo.</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Notificaciones</h2>
+            <div class="list-group">
+                {% for notificacion in notificaciones %}
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <p class="mb-1">{{ notificacion.mensaje }}</p>
+                            <small>{{ notificacion.fecha_creacion|timesince }} ago</small>
+                        </div>
+                    </a>
+                {% empty %}
+                    <p>No tienes notificaciones nuevas.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

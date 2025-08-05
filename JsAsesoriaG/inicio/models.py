@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 # Perfil base que todos los usuarios tendrán
 class Profile(models.Model):
@@ -52,6 +53,40 @@ class Postulante(models.Model):
     def __str__(self):
         return self.nombre_completo
 
+class Producto(models.Model):
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, related_name='productos')
+    nombre = models.CharField(max_length=255, verbose_name="Nombre del Producto")
+    descripcion = models.TextField(verbose_name="Descripción")
+    precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio")
+    imagen = models.ImageField(upload_to='productos/imagenes/', blank=True, null=True, verbose_name="Imagen del Producto")
+
+    def __str__(self):
+        return self.nombre
+
+class OfertaEmpleo(models.Model):
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='ofertas_empleo')
+    titulo = models.CharField(max_length=255, verbose_name="Título de la Oferta")
+    descripcion = models.TextField(verbose_name="Descripción del Puesto")
+    requisitos = models.TextField(verbose_name="Requisitos")
+    tipo_contrato = models.CharField(max_length=50, verbose_name="Tipo de Contrato")
+    fecha_publicacion = models.DateTimeField(default=timezone.now)
+    activa = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.titulo
+
+class Postulacion(models.Model):
+    oferta = models.ForeignKey(OfertaEmpleo, on_delete=models.CASCADE, related_name='postulaciones')
+    postulante = models.ForeignKey(Postulante, on_delete=models.CASCADE, related_name='postulaciones')
+    fecha_postulacion = models.DateTimeField(default=timezone.now)
+    mensaje = models.TextField(blank=True, null=True, verbose_name="Mensaje Adicional")
+
+    class Meta:
+        unique_together = ('oferta', 'postulante') # Evita que un postulante se postule dos veces a la misma oferta
+
+    def __str__(self):
+        return f'{self.postulante.nombre_completo} se postuló a {self.oferta.titulo}'
+
 # Señales para crear/actualizar perfiles
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -64,3 +99,5 @@ def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
     except Profile.DoesNotExist:
         Profile.objects.create(user=instance)
+
+
