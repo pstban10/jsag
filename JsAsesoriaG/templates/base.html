@@ -47,9 +47,15 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Asesoría Legal</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Proveedores VIP</a>
-                        </li>
+                        {% if user.profile.user_type == 'proveedor' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Mi catálogo</a>
+                            </li>
+                        {% else%}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Proveedores VIP</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="#">Banco de CV's</a>
                         </li>
@@ -76,6 +82,7 @@
                         </li>
 
                     {% else %}
+                    {% comment %} si no hay sesión iniciada {% endcomment %}
                         <li class="nav-item">
                             <a class="nav-link" href="{%url "somos"%}">¿Quiénes somos?</a>
                         </li>
