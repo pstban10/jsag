@@ -120,6 +120,13 @@ WSGI_APPLICATION = 'JsAsesoriaG.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+""" DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
@@ -128,7 +135,7 @@ DATABASES = {
         'PORT': '24235',
 
     }
-}
+} """
 
 
 # Password validation
