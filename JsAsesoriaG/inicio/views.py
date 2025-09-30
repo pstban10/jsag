@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileTypeForm, ClienteForm, ProveedorForm, PostulanteForm
+from .forms import ProfileTypeForm, ClienteForm, ProveedorForm, PostulanteForm, CatalogoForm
 from django.contrib import messages
-from .models import Profile, Cliente, Proveedor, Postulante
+from .models import Profile, Cliente, Proveedor, Postulante, Catalogo
 
 @login_required
 def profile_completion_view(request):
@@ -85,7 +85,17 @@ def index(request):
             elif profile.user_type == 'postulante':
                 return redirect('postulante_dashboard')
 
-    return render(request, 'index.html')
+    profile_pic = None
+    if request.user.is_authenticated:
+        social = SocialAccount.objects.filter(
+            user=request.user, provider="google").first()
+        if social:
+            profile_pic = social.extra_data.get("picture")
+    return render(
+        request,
+        'index.html',
+        {"profile_pic": profile_pic}
+    )
 
 
 def somos(request):
@@ -100,21 +110,6 @@ def servicios(request):
         request,
         "servicios.html"
     )
-
-
-def index(request):
-    profile_pic = None
-    if request.user.is_authenticated:
-        social = SocialAccount.objects.filter(
-            user=request.user, provider="google").first()
-        if social:
-            profile_pic = social.extra_data.get("picture")
-    return render(
-        request,
-        'index.html',
-        {"profile_pic": profile_pic}
-    )
-
 
 def finance(request):
     return render(
@@ -136,3 +131,97 @@ def profile(request):
         request,
         "profile.html"
     )
+
+@login_required
+def invertir_view(request):
+    return render(request, 'invertir.html')
+
+@login_required
+def proveedores_vip_view(request):
+    return render(request, 'proveedores_vip.html')
+
+@login_required
+def asesoria_legal_view(request):
+    return render(request, 'asesoria_legal.html')
+
+@login_required
+def mi_catalogo_view(request):
+    try:
+        proveedor = request.user.proveedor
+    except Proveedor.DoesNotExist:
+        return redirect('index')
+
+    catalogo = Catalogo.objects.filter(proveedor=proveedor)
+    context = {
+        'catalogo': catalogo
+    }
+    return render(request, 'mi_catalogo.html', context)
+
+@login_required
+def agregar_producto_view(request):
+    try:
+        proveedor = request.user.proveedor
+    except Proveedor.DoesNotExist:
+        return redirect('index')
+
+    if request.method == 'POST':
+        form = CatalogoForm(request.POST, request.FILES)
+        if form.is_valid():
+            producto = form.save(commit=False)
+            producto.proveedor = proveedor
+            producto.save()
+            return redirect('mi_catalogo')
+    else:
+        form = CatalogoForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'editar_catalogo.html', context)
+
+@login_required
+def editar_producto_view(request, pk):
+    try:
+        proveedor = request.user.proveedor
+    except Proveedor.DoesNotExist:
+        return redirect('index')
+
+    producto = get_object_or_404(Catalogo, pk=pk, proveedor=proveedor)
+
+    if request.method == 'POST':
+        form = CatalogoForm(request.POST, request.FILES, instance=producto)
+        if form.is_valid():
+            form.save()
+            return redirect('mi_catalogo')
+    else:
+        form = CatalogoForm(instance=producto)
+
+    context = {
+        'form': form
+    }
+    return render(request, 'editar_catalogo.html', context)
+
+@login_required
+def eliminar_producto_view(request, pk):
+    try:
+        proveedor = request.user.proveedor
+    except Proveedor.DoesNotExist:
+        return redirect('index')
+
+    producto = get_object_or_404(Catalogo, pk=pk, proveedor=proveedor)
+    if request.method == 'POST':
+        producto.delete()
+        return redirect('mi_catalogo')
+    
+    context = {
+        'producto': producto
+    }
+    return render(request, 'eliminar_producto_confirm.html', context)
+
+@login_required
+def banco_cv_view(request):
+    return render(request, 'banco_cv.html')
+
+@login_required
+def mi_perfil_view(request):
+    return render(request, 'mi_perfil.html')

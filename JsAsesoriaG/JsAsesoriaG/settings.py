@@ -13,7 +13,13 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[
+                         "localhost", "**.devtunnels.ms"])
+
+# CSRF
+CSRF_TRUSTED_ORIGINS = [
+    "https://21f9-7g4n-8000.brs.devtunnels.ms",
+]
 
 # Application definition
 DJANGO_APPS = [
@@ -76,6 +82,7 @@ SOCIALACCOUNT_PROVIDERS = {
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
 ACCOUNT_SIGNUP_REDIRECT_URL = '/profile'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -156,6 +163,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

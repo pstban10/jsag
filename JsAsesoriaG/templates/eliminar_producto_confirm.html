@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Eliminación | JS Asesoría{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Confirmar Eliminación</h3>
+                </div>
+                <div class="card-body">
+                    <p>¿Estás seguro de que querés eliminar el producto "<strong>{{ producto.nombre }}</strong>"?</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            <a href="{% url 'mi_catalogo' %}" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

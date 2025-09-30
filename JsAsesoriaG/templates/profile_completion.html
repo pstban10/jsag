@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n crispy_forms_tags %}
 
-{% block title %}Completa tu Perfil{% endblock %}
+{% block title %}Completá tu Perfil{% endblock %}
 
 {% block content %}
 <div class="container py-5 mt-5">
@@ -13,9 +13,9 @@
                     <h2 class="font-heading mb-3">Un último paso...</h2>
                     <p class="text-white-50 mb-4">
                         {% if not user_type %}
-                            ¡Bienvenido! Para poder ofrecerte una experiencia personalizada, por favor selecciona el tipo de perfil que mejor te describe.
+                            ¡Bienvenido! Para poder ofrecerte una experiencia personalizada, por favor seleccioná el tipo de perfil que mejor te describe.
                         {% else %}
-                            Ahora, por favor completa los detalles de tu perfil de {{ user_type }}.
+                            Ahora, por favor completá los detalles de tu perfil de {{ user_type }}.
                         {% endif %}
                     </p>
 

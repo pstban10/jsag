@@ -40,6 +40,17 @@ class Proveedor(models.Model):
     def __str__(self):
         return self.nombre_empresa
 
+# Modelo para el catálogo de productos o servicios de un proveedor
+class Catalogo(models.Model):
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, related_name='catalogo')
+    nombre = models.CharField(max_length=255, verbose_name="Nombre del Producto/Servicio")
+    descripcion = models.TextField(verbose_name="Descripción")
+    precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio")
+    imagen = models.ImageField(upload_to='catalogo/productos/', blank=True, null=True, verbose_name="Imagen del Producto")
+
+    def __str__(self):
+        return f'{self.nombre} - {self.proveedor.nombre_empresa}'
+
 # Perfil específico para Postulantes
 class Postulante(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

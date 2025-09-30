@@ -1,98 +1,204 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Página de Inicio | Asesoría Gastronómica{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block seo %}
+<title>Consultoría Gastronómica Profesional | JS Asesoría</title>
+<meta
+  name="description"
+  content="Transformá tu restaurante en un negocio rentable. Ofrecemos asesoría experta en finanzas, gestión de equipos y operaciones para emprendedores y restaurantes consolidados."
+/>
+{% endblock seo %} {% block content %}
 <section class="hero">
-    {% comment %} 
-        Sistema 1: Carrusel de Bootstrap con FADE para MÓVILES.
-        Se oculta en pantallas grandes (lg) con la clase d-lg-none.
-    {% endcomment %}
-    <div id="heroCarousel" class="carousel slide carousel-fade d-lg-none" data-bs-ride="carousel" data-bs-interval="5000">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'img/carrousel/img6.jpg' %}" class="d-block w-100" alt="Restaurante elegante">
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/carrousel/img7.jpg' %}" class="d-block w-100" alt="Chef preparando un plato">
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/carrousel/img8.jpg' %}" class="d-block w-100" alt="Equipo de cocina trabajando">
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/carrousel/img9.jpg' %}" class="d-block w-100" alt="Equipo de cocina trabajando">
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/carrousel/img10.jpg' %}" class="d-block w-100" alt="Equipo de cocina trabajando">
-            </div>
-          </div>
+  {% comment %} Sistema 1: Carrusel de Bootstrap con FADE para MÓVILES. Se
+  oculta en pantallas grandes (lg) con la clase d-lg-none. {% endcomment %}
+  <div
+    id="heroCarousel"
+    class="carousel slide carousel-fade d-lg-none"
+    data-bs-ride="carousel"
+    data-bs-interval="5000"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="{% static 'img/carrousel/img6.jpg' %}"
+          class="d-block w-100"
+          alt="Restaurante elegante"
+        />
       </div>
-    {% comment %} 
-        Sistema 2: Filmstrip con scroll continuo para ESCRITORIO.
-        Se oculta por defecto y se muestra solo en pantallas grandes (lg) con d-none d-lg-block.
-    {% endcomment %}
-    <div class="scrolling-wrapper d-none d-lg-block">
-        <div class="scrolling-track">
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img1.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img2.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img3.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img4.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img5.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img1.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img2.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img3.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img4.jpg' %}" alt="..."></div>
-            <div class="scrolling-slide"><img src="{% static 'img/carrousel/img5.jpg' %}" alt="..."></div>
-        </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'img/carrousel/img7.jpg' %}"
+          class="d-block w-100"
+          alt="Chef preparando un plato"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'img/carrousel/img8.jpg' %}"
+          class="d-block w-100"
+          alt="Equipo de cocina trabajando"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'img/carrousel/img9.jpg' %}"
+          class="d-block w-100"
+          alt="Equipo de cocina trabajando"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'img/carrousel/img10.jpg' %}"
+          class="d-block w-100"
+          alt="Equipo de cocina trabajando"
+        />
+      </div>
     </div>
-
-    {% comment %} Capas de superposición y contenido (sin cambios) {% endcomment %}
-    <div class="hero-overlay"></div>
-    <div class="container hero-content text-center">
-        <h1 class="font-heading">Transformamos restaurantes en negocios rentables y exitosos</h1>
-        <p class="lead">La guía experta para optimizar cada aspecto de tu proyecto gastronómico.</p>
-        <button type="button" class="btn btn-gold btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">
-            Solicitar Análisis Inicial
-        </button>
+  </div>
+  {% comment %} Sistema 2: Filmstrip con scroll continuo para ESCRITORIO. Se
+  oculta por defecto y se muestra solo en pantallas grandes (lg) con d-none
+  d-lg-block. {% endcomment %}
+  <div class="scrolling-wrapper d-none d-lg-block">
+    <div class="scrolling-track">
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img1.jpg' %}"
+          alt="Plato gourmet servido en un restaurante"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img2.jpg' %}"
+          alt="Interior de un restaurante moderno y elegante"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img3.jpg' %}"
+          alt="Chef profesional cocinando en una cocina industrial"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img4.jpg' %}"
+          alt="Mesa puesta para una cena elegante"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img5.jpg' %}"
+          alt="Cócteles servidos en la barra de un bar"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img1.jpg' %}"
+          alt="Plato gourmet servido en un restaurante"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img2.jpg' %}"
+          alt="Interior de un restaurante moderno y elegante"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img3.jpg' %}"
+          alt="Chef profesional cocinando en una cocina industrial"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img4.jpg' %}"
+          alt="Mesa puesta para una cena elegante"
+        />
+      </div>
+      <div class="scrolling-slide">
+        <img
+          src="{% static 'img/carrousel/img5.jpg' %}"
+          alt="Cócteles servidos en la barra de un bar"
+        />
+      </div>
     </div>
-  </section>
+  </div>
 
+  {% comment %} Capas de superposición y contenido (sin cambios) {% endcomment%}
+  <div class="hero-overlay"></div>
+  <div class="container hero-content text-center">
+    <h1 class="font-heading">
+      Transformamos restaurantes en negocios rentables y exitosos
+    </h1>
+    <p class="lead">
+      La guía experta para optimizar cada aspecto de tu proyecto gastronómico.
+    </p>
+    <button
+      type="button"
+      class="btn btn-gold btn-lg mt-3"
+      data-bs-toggle="modal"
+      data-bs-target="#contactModal"
+    >
+      Solicitar Análisis Inicial
+    </button>
+  </div>
+</section>
 
 <section id="servicios" class="py-5">
   <div class="container">
     <h2 class="text-center mb-5">Soluciones a tu Medida</h2>
     <div class="row text-center">
-
       <!-- FINANZAS Y RENTABILIDAD -->
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm border-0" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalFinanzas">
+        <div
+          class="card h-100 shadow-sm border-0"
+          style="cursor: pointer"
+          data-bs-toggle="modal"
+          data-bs-target="#modalFinanzas"
+        >
           <div class="card-body">
             <i class="bi bi-cash-coin display-3 text-gold"></i>
-            <h3 class="card-title font-heading mt-3">Finanzas y Rentabilidad</h3>
-            <p class="card-text">Analizamos tus números, optimizamos costos y diseñamos estrategias para maximizar cada ingreso.</p>
+            <h3 class="card-title font-heading mt-3">
+              Finanzas y Rentabilidad
+            </h3>
+            <p class="card-text">
+              Analizamos tus números, optimizamos costos y diseñamos estrategias
+              para maximizar cada ingreso.
+            </p>
           </div>
         </div>
       </div>
 
       <!-- GESTIÓN DE EQUIPOS -->
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm border-0" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalEquipos">
+        <div
+          class="card h-100 shadow-sm border-0"
+          style="cursor: pointer"
+          data-bs-toggle="modal"
+          data-bs-target="#modalEquipos"
+        >
           <div class="card-body">
             <i class="bi bi-people-fill display-3 text-gold"></i>
             <h3 class="card-title font-heading mt-3">Gestión de Equipos</h3>
-            <p class="card-text">Formamos y lideramos equipos de alto rendimiento que se convierten en el motor de tu restaurante.</p>
+            <p class="card-text">
+              Formamos y lideramos equipos de alto rendimiento que se convierten
+              en el motor de tu restaurante.
+            </p>
           </div>
         </div>
       </div>
 
       <!-- GESTIÓN Y OPERACIONES -->
       <div class="col-lg-4 mb-4">
-        <div class="card h-100 shadow-sm border-0" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalOperaciones">
+        <div
+          class="card h-100 shadow-sm border-0"
+          style="cursor: pointer"
+          data-bs-toggle="modal"
+          data-bs-target="#modalOperaciones"
+        >
           <div class="card-body">
             <i class="bi bi-clipboard-data display-3 text-gold"></i>
             <h3 class="card-title font-heading mt-3">Gestión y Operaciones</h3>
-            <p class="card-text">Perfeccionamos tus procesos en cocina y salón para lograr una eficiencia operativa impecable.</p>
+            <p class="card-text">
+              Perfeccionamos tus procesos en cocina y salón para lograr una
+              eficiencia operativa impecable.
+            </p>
           </div>
         </div>
       </div>
@@ -101,16 +207,44 @@
 </section>
 
 <!-- MODAL: Finanzas y Rentabilidad -->
-<div class="modal fade" id="modalFinanzas" tabindex="-1" aria-labelledby="modalFinanzasLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalFinanzas"
+  tabindex="-1"
+  aria-labelledby="modalFinanzasLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body p-0">
-        <img src="{% static 'img/ref3.jpg' %}" class="img-fluid rounded-top" alt="Finanzas gastronómicas">
+        <img
+          src="{% static 'img/ref3.jpg' %}"
+          class="img-fluid rounded-top"
+          alt="Finanzas gastronómicas"
+        />
         <div class="p-4">
-          <h5 class="modal-title font-heading mb-3" id="modalFinanzasLabel">Finanzas que impulsan decisiones</h5>
-          <p>No basta con vender bien, hay que entender dónde se gana y dónde se pierde. Detectamos fugas de dinero, diseñamos estructuras de precios lógicas y herramientas de control que mejoran la rentabilidad sin sacrificar calidad.</p>
-          <p>Con nuestra ayuda, vas a tener claridad total sobre tu negocio: qué platos convienen, cuánto margen real tenés y cómo proyectar el crecimiento.</p>
-          <button class="btn btn-gold mt-3" data-bs-toggle="modal" data-bs-target="#contactModal" data-bs-dismiss="modal">Contactanos</button>
+          <h5 class="modal-title font-heading mb-3" id="modalFinanzasLabel">
+            Finanzas que impulsan decisiones
+          </h5>
+          <p>
+            No basta con vender bien, hay que entender dónde se gana y dónde se
+            pierde. Detectamos fugas de dinero, diseñamos estructuras de precios
+            lógicas y herramientas de control que mejoran la rentabilidad sin
+            sacrificar calidad.
+          </p>
+          <p>
+            Con nuestra ayuda, vas a tener claridad total sobre tu negocio: qué
+            platos convienen, cuánto margen real tenés y cómo proyectar el
+            crecimiento.
+          </p>
+          <button
+            class="btn btn-gold mt-3"
+            data-bs-toggle="modal"
+            data-bs-target="#contactModal"
+            data-bs-dismiss="modal"
+          >
+            Contactanos
+          </button>
         </div>
       </div>
     </div>
@@ -118,16 +252,43 @@
 </div>
 
 <!-- MODAL: Gestión de Equipos -->
-<div class="modal fade" id="modalEquipos" tabindex="-1" aria-labelledby="modalEquiposLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalEquipos"
+  tabindex="-1"
+  aria-labelledby="modalEquiposLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body p-0">
-        <img src="{% static 'img/ref2.jpg' %}" class="img-fluid rounded-top" alt="Gestión de personal gastronómico">
+        <img
+          src="{% static 'img/ref2.jpg' %}"
+          class="img-fluid rounded-top"
+          alt="Gestión de personal gastronómico"
+        />
         <div class="p-4">
-          <h5 class="modal-title font-heading mb-3" id="modalEquiposLabel">Liderar con propósito</h5>
-          <p>Tu equipo no solo cocina o atiende: representa tu marca. Por eso trabajamos en la formación, motivación y organización del personal. Diseñamos protocolos, capacitaciones y herramientas para lograr un ambiente profesional y comprometido.</p>
-          <p>Un buen equipo bien guiado es la diferencia entre sobrevivir y destacar. Te ayudamos a construirlo desde adentro.</p>
-          <button class="btn btn-gold mt-3" data-bs-toggle="modal" data-bs-target="#contactModal" data-bs-dismiss="modal">Contactanos</button>
+          <h5 class="modal-title font-heading mb-3" id="modalEquiposLabel">
+            Liderar con propósito
+          </h5>
+          <p>
+            Tu equipo no solo cocina o atiende: representa tu marca. Por eso
+            trabajamos en la formación, motivación y organización del personal.
+            Diseñamos protocolos, capacitaciones y herramientas para lograr un
+            ambiente profesional y comprometido.
+          </p>
+          <p>
+            Un buen equipo bien guiado es la diferencia entre sobrevivir y
+            destacar. Te ayudamos a construirlo desde adentro.
+          </p>
+          <button
+            class="btn btn-gold mt-3"
+            data-bs-toggle="modal"
+            data-bs-target="#contactModal"
+            data-bs-dismiss="modal"
+          >
+            Contactanos
+          </button>
         </div>
       </div>
     </div>
@@ -135,50 +296,159 @@
 </div>
 
 <!-- MODAL: Gestión y Operaciones -->
-<div class="modal fade" id="modalOperaciones" tabindex="-1" aria-labelledby="modalOperacionesLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="modalOperaciones"
+  tabindex="-1"
+  aria-labelledby="modalOperacionesLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body p-0">
-        <img src="{% static 'img/ref1.jpg' %}" class="img-fluid rounded-top" alt="Operaciones gastronómicas">
+        <img
+          src="{% static 'img/ref1.jpg' %}"
+          class="img-fluid rounded-top"
+          alt="Operaciones gastronómicas"
+        />
         <div class="p-4">
-          <h5 class="modal-title font-heading mb-3" id="modalOperacionesLabel">Eficiencia en cada detalle</h5>
-          <p>Perfeccionamos los procesos internos en cocina, salón y administración. Desde checklists operativos hasta mejoras en el flujo de trabajo y comunicación entre áreas. Eliminamos fricciones y ganás tiempo, calidad y tranquilidad.</p>
-          <p>La operación es el corazón de tu negocio. Nosotros la ordenamos para que puedas escalar con control.</p>
-          <button class="btn btn-gold mt-3" data-bs-toggle="modal" data-bs-target="#contactModal" data-bs-dismiss="modal">Contactanos</button>
+          <h5 class="modal-title font-heading mb-3" id="modalOperacionesLabel">
+            Eficiencia en cada detalle
+          </h5>
+          <p>
+            Perfeccionamos los procesos internos en cocina, salón y
+            administración insertando manuales de función para mejorar el flujo
+            de trabajo y comunicación entre áreas, eliminando fricciones y
+            perdidas de tiempo, ganando eficiencia, calidad y tranquilidad.
+          </p>
+          <p>
+            La operación es el corazón de tu negocio. Nosotros la ordenamos para
+            que puedas escalar con control.
+          </p>
+          <button
+            class="btn btn-gold mt-3"
+            data-bs-toggle="modal"
+            data-bs-target="#contactModal"
+            data-bs-dismiss="modal"
+          >
+            Contactanos
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<section id="para-quien" class="target-audience">
+  <div class="container">
+    <h2>¿Es esta consultoría para ti?</h2>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h3>Nuevos Emprendedores</h3>
+        <p>
+          Te guiamos paso a paso en tu proyecto gastronomico, desde el plan de
+          negocio y la búsqueda de instalaciones y proveedores hasta la
+          apertura, asegurando una base sólida para tu éxito.
+        </p>
+      </div>
+      <div class="audience-card">
+        <h3>Restaurantes Consolidados</h3>
+        <p>
+          Analizamos tu operación actual para identificar áreas de mejora,
+          optimizar la rentabilidad, renovar tu propuesta de valor y llevar tu
+          negocio ya establecido al siguiente nivel.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <section id="para-quien" class="target-audience">
-            <div class="container">
-                <h2>¿Es esta consultoría para ti?</h2>
-                <div class="audience-grid">
-                    <div class="audience-card">
-                        <h3>Nuevos Emprendedores</h3>
-                        <p>Te guiamos paso a paso en el lanzamiento de tu restaurante, desde el plan de negocio y la búsqueda de proveedores hasta la apertura, asegurando una base sólida para tu éxito.</p>
-                    </div>
-                    <div class="audience-card">
-                        <h3>Restaurantes Consolidados</h3>
-                        <p>Analizamos tu operación actual para identificar áreas de mejora, optimizar la rentabilidad, renovar tu propuesta de valor y llevar tu negocio ya establecido al siguiente nivel.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section id="nuestro-equipo" class="team-section">
+  <div class="container">
+    <h2 class="text-center mb-5">Conocé a Nuestro Equipo</h2>
+    <div class="team-grid">
+      <!-- Miembro del Equipo 1 -->
+      <div class="team-card">
+        <img src={% static "img/equipo/jesi.jpg" %} alt="Foto de Jesica
+        Scheiner" class="team-photo" />
+        <h3 class="team-name">Jesica Scheiner</h3>
+        <p class="team-role">Fundadora y Consultora Principal</p>
+        <p class="team-bio">
+          Con más de 15 años de experiencia, Jesica es la estratega detrás de
+          cada proyecto exitoso.
+        </p>
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        </div>
+      </div>
 
-        <section id="sobre-mi" class="about">
-            <div class="container about-flex">
-                <div class="about-image">
-                    <img src="{%static "img/jsag.logo.png"%}" alt="Foto de la asesora">
-                </div>
-                <div class="about-text">
-                    <h2>Hola, soy Jesica Scheiner</h2>
-                    <p>Con más de 15 años de experiencia en el sector gastronómico, mi pasión es ayudar a dueños de restaurantes como tú a alcanzar su máximo potencial. Mi enfoque es 100% práctico y orientado a resultados.</p>
-                    <p>Mi misión es darte las herramientas y la estrategia para que tu negocio no solo sobreviva, sino que prospere en un mercado competitivo.</p>
-                </div>
-            </div>
-        </section>
+      <!-- Miembro del Equipo 2 -->
+      <div class="team-card">
+        <img src={% static "img/equipo/pedro.jpg" %} alt="Foto de Pedro Alonzo"
+        class="team-photo" />
+        <h3 class="team-name">Pedro Alonzo</h3>
+        <p class="team-role">Chef Ejecutivo y Asesor Culinario</p>
+        <p class="team-bio">
+          Experto en la creación de menús rentables y la optimización de
+          procesos en cocina.
+        </p>
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Miembro del Equipo 3 -->
+      <div class="team-card">
+        <img src={% static "img/equipo/edgar.jpg" %} alt="Foto de Edgar Almirón"
+        class="team-photo" />
+        <h3 class="team-name">Edgar Almirón</h3>
+        <p class="team-role">Especialista en Locación gastronomica</p>
+        <p class="team-bio">
+          Edgar te ayudara a encontrar la mejor locación para tu proyecto
+          gastronomico.
+        </p>
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <!-- Miembro del Equipo 4 -->
+      <div class="team-card">
+        <img src={% static "img/equipo/leo.jpg" %} alt="Foto de Leo Villegas"
+        class="team-photo" />
+        <h3 class="team-name">Leo Villegas</h3>
+        <p class="team-role">Comunity Manager</p>
+        <p class="team-bio">
+          Leo gestiona nuestras RRSS y se encarga de hacer ver nuestro trabajo y
+          transmitir nuestro mensaje
+        </p>
+        <div class="team-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi" class="about">
+  <div class="container about-flex">
+    <div class="about-image">
+      <img src="{%static "img/jsag.logo.png"%}" alt="Foto de Jesica Scheiner,
+      asesora gastronómica">
+    </div>
+    <div class="about-text">
+      <h2>Hola, soy Jesica Scheiner</h2>
+      <p>
+        Con más de 15 años de experiencia en el sector gastronómico, mi pasión
+        es ayudar a dueños de restaurantes como vos a alcanzar su máximo
+        potencial. Mi enfoque es 100% práctico y orientado a resultados.
+      </p>
+      <p>
+        Mi misión es darte las herramientas y la estrategia para que tu negocio
+        no solo sobreviva, sino que prospere en un mercado competitivo.
+      </p>
+    </div>
+  </div>
+</section>
 
 {% endblock content %}
