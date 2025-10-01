@@ -119,7 +119,7 @@ WSGI_APPLICATION = 'JsAsesoriaG.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
@@ -129,6 +129,9 @@ DATABASES = {
         'PORT': env("DB_PORT"),
 
     }
+} """
+DATABASES = {
+    'default': env.db('DATABASE_URL')
 }
 
 # Password validation
