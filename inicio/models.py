@@ -63,6 +63,30 @@ class Postulante(models.Model):
     def __str__(self):
         return self.nombre_completo
 
+# Modelo para el formulario de contacto
+class Contacto(models.Model):
+    ESTADO_CHOICES = [
+        ('pendiente', 'Pendiente'),
+        ('respondido', 'Respondido'),
+        ('descartado', 'Descartado'),
+    ]
+    CATEGORIA_CHOICES = [
+        ('dueño', 'Dueño de negocio / encargado'),
+        ('proveedor', 'Proveedor de servicios o productos'),
+        ('gubernamental', 'Entidad gubernamental'),
+        ('otro', 'Otro'),
+    ]
+
+    nombre = models.CharField(max_length=255)
+    email = models.EmailField()
+    mensaje = models.TextField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
+    categoria = models.CharField(max_length=20, choices=CATEGORIA_CHOICES, default='otro')
+
+    def __str__(self):
+        return f'{self.nombre} - {self.email}'
+
 # Señales para crear/actualizar perfiles
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

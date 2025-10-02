@@ -33,6 +33,11 @@ Las funcionalidades implementadas y mejoras realizadas hasta ahora son:
     - Vistas para el registro, inicio de sesión y completar el perfil.
     - Paneles de control básicos para cada tipo de usuario (`cliente/dashboard.html`, `proveedor/dashboard.html`, `postulante/dashboard.html`).
     - Páginas estáticas como "Quiénes Somos", "Servicios", "Finanzas" y "Gestión".
+- **Formulario de Contacto:**
+    - Creación de un modelo `Contacto` para almacenar los mensajes recibidos.
+    - Implementación de una vista para procesar el formulario y guardar los datos.
+    - Visualización de un mensaje de éxito en un modal emergente tras el envío.
+    - Acceso a los mensajes para administradores a través del panel de Django.
 - **Mejoras de Interfaz y Contenido (UI/UX):**
     - **Localización a Español Argentino:** Se ha adaptado todo el texto de las plantillas para usar el "voseo" y expresiones comunes de Argentina, creando una experiencia más cercana para el usuario local.
     - **Nueva Sección "Nuestro Equipo":** Se ha añadido una sección en la página de inicio para presentar a los miembros del equipo, con un diseño profesional y responsivo.

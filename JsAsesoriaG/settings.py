@@ -107,7 +107,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'JsAsesoriaG.context_processors.add_login_form_to_context',
+                'JsAsesoriaG.context_processors.global_context',
 
             ],
         },
@@ -120,12 +120,22 @@ WSGI_APPLICATION = 'JsAsesoriaG.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Base de datos de producción Railway
 
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3'
     )
 }
+
+# Base de datos para el entorno Local
+
+""" DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+} """
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

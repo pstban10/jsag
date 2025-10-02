@@ -1,5 +1,10 @@
 from django import forms
-from .models import Profile, Cliente, Proveedor, Postulante, Catalogo
+from .models import Profile, Cliente, Proveedor, Postulante, Catalogo, Contacto
+
+class ContactoForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['nombre', 'email', 'mensaje']
 
 class CatalogoForm(forms.ModelForm):
     class Meta:

@@ -1,9 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileTypeForm, ClienteForm, ProveedorForm, PostulanteForm, CatalogoForm
+from .forms import ProfileTypeForm, ClienteForm, ProveedorForm, PostulanteForm, CatalogoForm, ContactoForm
 from django.contrib import messages
 from .models import Profile, Cliente, Proveedor, Postulante, Catalogo
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Redirigir a la página de inicio con un parámetro para mostrar el modal
+            return redirect('/?form_submitted=true')
+    # Si no es POST o el formulario no es válido, redirigir a la página de inicio
+    return redirect('/')
 
 @login_required
 def profile_completion_view(request):
@@ -85,16 +95,11 @@ def index(request):
             elif profile.user_type == 'postulante':
                 return redirect('postulante_dashboard')
 
-    profile_pic = None
-    if request.user.is_authenticated:
-        social = SocialAccount.objects.filter(
-            user=request.user, provider="google").first()
-        if social:
-            profile_pic = social.extra_data.get("picture")
+    form_submitted = request.GET.get('form_submitted', 'false') == 'true'
     return render(
         request,
         'index.html',
-        {"profile_pic": profile_pic}
+        {'form_submitted_successfully': form_submitted}
     )
 
 

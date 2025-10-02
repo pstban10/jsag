@@ -145,10 +145,11 @@
                 </div>
                 <div class="modal-body">
                     <p>Dejame tus datos y te contacto a la brevedad para coordinar una reunión virtual sin costo.</p>
-                    <form id="contact-form">
+                    <form id="contact-form" action="{% url 'contacto' %}" method="POST">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="nameInput" class="form-label">Nombre Completo</label>
-                            <input type="text" class="form-control" id="nameInput" name="name" required>
+                            <input type="text" class="form-control" id="nameInput" name="nombre" required>
                         </div>
                         <div class="mb-3">
                             <label for="emailInput" class="form-label">Correo Electrónico</label>
@@ -156,7 +157,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="messageTextarea" class="form-label">Contame sobre tu proyecto</label>
-                            <textarea class="form-control" id="messageTextarea" name="message" rows="4" required></textarea>
+                            <textarea class="form-control" id="messageTextarea" name="mensaje" rows="4" required></textarea>
                         </div>
                     </form>
                 </div>
@@ -231,6 +232,23 @@
         </div>
     </div>
 
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="successModalLabel">¡Mensaje Enviado!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¡Hemos recibido tu mensaje! Gracias por contactarte con JS Asesores. Nos pondremos en contacto contigo a la brevedad.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-gold" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <div class="fab-container">
         <a href="/" class="fab-button fab-home">
@@ -252,5 +270,13 @@
     </div>
 
     <script src="{% static 'js/index.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            {% if form_submitted_successfully %}
+                var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+            {% endif %}
+        });
+    </script>
 </body>
 </html>
