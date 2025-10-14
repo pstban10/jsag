@@ -1,0 +1,624 @@
+/* ---- Estilos Personalizados sobre Bootstrap ---- */
+
+/* 1. Definición de Fuentes y Colores */
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-primary: 'Montserrat', sans-serif;
+    --color-gold: #cda434;
+    --color-dark: #1a1a1a;
+    --spacing-base: 1rem; /* 16px */
+}
+
+body {
+    font-family: var(--font-primary);
+    padding-top: 56px;
+    font-weight: 400;
+    color: var(--color-text);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hace que el body ocupe toda la pantalla */
+}
+main {
+    flex: 1;
+}
+
+/* 2. Clases para Tipografía y Colores */
+.font-heading {
+    font-family: var(--font-heading);
+}
+
+.text-gold {
+    color: var(--color-gold) !important;
+}
+
+/* 3. Estilos para el Hero Section */
+.hero {
+    position: relative; /* Contenedor principal para posicionamiento absoluto */
+    color: #fff;
+    height: 65vh; /* Altura del hero, ajústala a tu gusto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#heroCarousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Capa más baja */
+}
+.carousel-item,
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin deformarse */
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Negro con 50% de opacidad. Ajusta este valor para más o menos oscuridad */
+    z-index: 2; /* Por encima del carrusel, debajo del texto */
+}
+.hero-content {
+    position: relative;
+    z-index: 3; /* La capa de texto, por encima de todo */
+}
+
+.hero-content h1 {
+    font-size: 3.8rem; /* Tamaño de fuente grande para impacto */
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar el texto */
+}
+.hero-content .lead {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+/* 4. Estilos para Botones Personalizados */
+.btn-gold {
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    border-color: var(--color-gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    background-color: #b48f22;
+    /* Un dorado más oscuro */
+    border-color: #b48f22;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* Botón de Login en la Navbar */
+.btn-outline-gold {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.btn-outline-gold:hover {
+    color: var(--color-dark);
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+/* Botón de Login con Google */
+.btn-google {
+    font-weight: 700;
+}
+
+/* 5. Ajustes a Componentes de Bootstrap */
+
+/* Títulos de las secciones */
+h2 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: padding 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    /* Aumenta el tamaño de la marca */
+}
+
+.navbar-logo-img {
+    height: 2rem;
+    width: auto;
+    margin-right: 0.5rem;
+}
+.userImg {
+    max-height: 2rem;
+    max-width: auto;
+}
+
+/* Cards de Servicios */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px; /* o la altura que prefieras */
+    object-fit: cover;
+}
+
+.target-audience {
+    background-color: #f8f9fa;
+    /* gris muy claro */
+    padding: 5rem 0;
+}
+
+.audience-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.audience-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-left: 5px solid var(--color-gold);
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.audience-card:hover {
+    transform: translateY(-5px);
+}
+
+.audience-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+.audience-card p {
+    margin-bottom: 0;
+}
+/* ---- Estilo para tarjetas clicables ---- */
+.card-link-wrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Hereda el color del texto para que no se vea azul */
+    transition: all 0.3s ease;
+}
+
+.card-link-wrapper .card {
+    /* Mantenemos la transición que ya teníamos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-link-wrapper:hover .card {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.12) !important;
+}
+.about {
+    background-color: var(--color-dark);
+    color: #f0f0f0;
+    padding: 5rem 0;
+}
+
+.about-flex {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-image img {
+    width: 7rem;
+    height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--color-gold);
+}
+
+.about-text h2 {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.imgRest {
+    height: 25rem;
+    width: auto;
+}
+/* ---- Animación de Filmstrip para Escritorio ---- */
+
+/* Usamos una media query para aplicar estos estilos solo en pantallas grandes (lg y superiores) */
+@media (min-width: 992px) {
+    
+
+    /* La "ventana" que contendrá la cinta de imágenes */
+    .scrolling-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Oculta todo lo que se salga de la ventana */
+        z-index: 1;
+    }
+
+    /* La "cinta" que se mueve */
+    .scrolling-track {
+        /* Usamos variables para fácil configuración */
+        --slide-count: 5; /* IMPORTANTE: El número de imágenes ORIGINALES */
+        --slide-width: 1000px; /* Ancho deseado para cada imagen */
+        --animation-duration: 90s; /* Duración total de la animación */
+
+        display: flex;
+        width: calc(var(--slide-width) * var(--slide-count) * 2); /* Ancho total (imágenes x 2) */
+        height: 100%;
+        animation: scroll var(--animation-duration) linear infinite;
+    }
+
+    /* Cada imagen individual en la cinta */
+    .scrolling-slide {
+        width: var(--slide-width);
+        height: 100%;
+        flex-shrink: 0; /* Evita que las imágenes se encojan */
+    }
+
+    .scrolling-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Mantiene la proporción de la imagen */
+    }
+
+    /* La animación de desplazamiento */
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            /* Mueve la cinta hacia la izquierda por el ancho del set ORIGINAL de imágenes */
+            transform: translateX(calc(var(--slide-width) * var(--slide-count) * -1));
+        }
+    }
+
+    /* Opcional: Pausar la animación al pasar el mouse */
+    .scrolling-wrapper:hover .scrolling-track {
+        animation-play-state: paused;
+    }
+}
+/* Responsive: Ajustes para Móviles */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content .lead {
+        font-size: 1.2rem;
+    }
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+.audience-grid {
+    grid-template-columns: 1fr;
+    /* Cambia a 1 columna */
+}
+
+.audience-card {
+    text-align: center;
+    /* Opcional: centra el texto para mobile */
+}
+
+.about-flex {
+    flex-direction: column;
+    text-align: center;
+}
+
+
+/* ==== Footer Personalizado ==== */
+.site-footer {
+    background-color: var(--color-dark);
+    color: #f0f0f0;
+    padding : calc(var(--spacing-base) * 2.5) 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.site-footer p {
+    margin: 0;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+}
+
+.site-footer a {
+    color: var(--color-gold);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.site-footer .social-links {
+    margin-bottom: 1rem;
+}
+
+.site-footer .social-links a {
+    color: var(--color-gold);
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.site-footer .social-links a:hover {
+    color: #fff;
+}
+
+/* ---- Estilos para Formularios de Allauth ---- */
+
+/*
+  Soluciona el problema de visibilidad del texto de ayuda para contraseñas
+  en las tarjetas oscuras de login, registro y cambio de contraseña.
+*/
+.card.bg-dark .form-text {
+    color: rgba(255, 255, 255, 0.7) !important; /* Un blanco semitransparente */
+}
+
+/* ---- Estilos para Contenedor de Pantalla Completa con Scroll en Columna ---- */
+
+.fullscreen-container {
+    display: flex;
+    height: calc(100vh - 56px); /* Restamos la altura del navbar */
+    overflow: hidden;
+}
+
+.scrollable-column {
+    overflow-y: auto;
+    height: 100%; /* Ocupa toda la altura del contenedor padre */
+    padding: 2rem;
+}
+
+.fixed-column {
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    .fullscreen-container {
+        flex-direction: column;
+        height: auto;
+    }
+    .scrollable-column, .fixed-column {
+        height: auto;
+        padding: 1rem;
+    }
+}
+
+.text-content-wrapper {
+    max-width: 80%; /* Usaré 80% para que no se vea tan angosto */
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .text-content-wrapper {
+        max-width: 100%; /* En pantallas más pequeñas, ocupa todo el ancho */
+    }
+}
+
+/* ==== Sección Nuestro Equipo ==== */
+.team-section {
+    padding: 5rem 0;
+    background-color: var(--color-dark);
+    color: #f0f0f0;
+}
+
+.team-section h2 {
+    color: #fff;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.team-card {
+    background-color: #2a2a2a;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #444;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem auto;
+    border: 4px solid var(--color-gold);
+}
+
+.team-name {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.team-role {
+    color: var(--color-gold);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.team-bio {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.team-social a {
+    color: #ccc;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.team-social a:hover {
+    color: var(--color-gold);
+}
+
+/* ---- Botones Flotantes (FAB) ---- */
+.fab-container {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    z-index: 1050;
+}
+
+.fab-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.fab-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fab-whatsapp {
+    background-color: #25D366;
+}
+
+.fab-youtube {
+    background-color: #FF0000;
+}
+
+.fab-home {
+    background-color: #343a40;
+}
+
+/* ---- Modal de Video ---- */
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1060;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal-content {
+    position: relative;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    color: white;
+    background-color: #FF0000;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+}
+
+.video-modal-content iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 768px) {
+    .fab-container {
+        flex-direction: row;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .fab-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .video-modal-content {
+        width: 95%;
+        padding: 10px;
+    }
+}

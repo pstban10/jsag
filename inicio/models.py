@@ -79,6 +79,7 @@ class Contacto(models.Model):
 
     nombre = models.CharField(max_length=255)
     email = models.EmailField()
+    telefono = models.CharField(max_length=20, blank=True, null=True, verbose_name="Teléfono")
     mensaje = models.TextField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')

@@ -38,6 +38,11 @@ Las funcionalidades implementadas y mejoras realizadas hasta ahora son:
     - Implementación de una vista para procesar el formulario y guardar los datos.
     - Visualización de un mensaje de éxito en un modal emergente tras el envío.
     - Acceso a los mensajes para administradores a través del panel de Django.
+- **Sistema de Notificaciones por Correo para Contacto:**
+    - Se ha configurado el backend de correo de Django para utilizar un servidor SMTP, con credenciales gestionadas de forma segura a través de variables de entorno (`.env`).
+    - La vista del formulario de contacto ahora envía una notificación por correo electrónico al administrador del sitio cada vez que se recibe un nuevo mensaje.
+    - Se ha añadido el campo `telefono` al modelo `Contacto`, al formulario `ContactoForm` y a la plantilla del modal de contacto (`base.html`) para capturar esta información.
+    - Se aplicaron las migraciones de base de datos correspondientes para reflejar el nuevo campo.
 - **Mejoras de Interfaz y Contenido (UI/UX):**
     - **Localización a Español Argentino:** Se ha adaptado todo el texto de las plantillas para usar el "voseo" y expresiones comunes de Argentina, creando una experiencia más cercana para el usuario local.
     - **Nueva Sección "Nuestro Equipo":** Se ha añadido una sección en la página de inicio para presentar a los miembros del equipo, con un diseño profesional y responsivo.

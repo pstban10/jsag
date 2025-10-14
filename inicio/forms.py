@@ -2,9 +2,19 @@ from django import forms
 from .models import Profile, Cliente, Proveedor, Postulante, Catalogo, Contacto
 
 class ContactoForm(forms.ModelForm):
+    telefono = forms.CharField(
+        label="Teléfono (Opcional)",
+        required=False,
+        widget=forms.TextInput(attrs={
+            'type': 'tel',
+            'pattern': '[0-9-+\s()]*',
+            'title': 'Por favor, ingresa un número de teléfono válido.'
+        })
+    )
+
     class Meta:
         model = Contacto
-        fields = ['nombre', 'email', 'mensaje']
+        fields = ['nombre', 'email', 'telefono', 'mensaje']
 
 class CatalogoForm(forms.ModelForm):
     class Meta:

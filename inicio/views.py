@@ -4,12 +4,37 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileTypeForm, ClienteForm, ProveedorForm, PostulanteForm, CatalogoForm, ContactoForm
 from django.contrib import messages
 from .models import Profile, Cliente, Proveedor, Postulante, Catalogo
+from django.core.mail import send_mail
+from django.conf import settings
 
 def contact_view(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
-            form.save()
+            contacto = form.save()
+
+            # Enviar correo electrónico
+            subject = f'Nuevo mensaje de contacto de {contacto.nombre}'
+            message = f'''
+            Has recibido un nuevo mensaje de contacto a través del formulario de tu sitio web.
+
+            Nombre: {contacto.nombre}
+            Email: {contacto.email}
+            Teléfono: {contacto.telefono}
+
+            Mensaje:
+            {contacto.mensaje}
+            '''
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [settings.EMAIL_RECIPIENT]
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                # Opcional: Manejar el error, por ejemplo, registrarlo
+                # para no impedir que el usuario vea la confirmación.
+                print(f"Error al enviar el correo: {e}")
+
             # Redirigir a la página de inicio con un parámetro para mostrar el modal
             return redirect('/?form_submitted=true')
     # Si no es POST o el formulario no es válido, redirigir a la página de inicio
