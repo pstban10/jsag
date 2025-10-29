@@ -1,232 +1,534 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block seo %}
+{% extends 'base.html' %} {% load static %} {% block seo %}
 <title>Servicios de Consultoría Gastronómica | JS Asesoría</title>
-<meta name="description" content="Descubrí nuestras soluciones integrales para tu negocio gastronómico: diagnóstico 360°, capacitación de personal, estandarización de procesos, gestión de proveedores y más.">
-{% endblock seo %}
-
-{% block content %}
+<meta
+  name="description"
+  content="Descubrí nuestras soluciones integrales para tu negocio gastronómico: diagnóstico 360°, capacitación de personal, estandarización de procesos, gestión de proveedores y más."
+/>
+{% endblock seo %} {% block content %}
 <section class="section-ofrecemos py-5">
   <div class="container">
     <div class="row align-items-center mb-5">
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <img src="{% static 'img/ref4.jpg' %}" alt="Servicios de asesoría gastronómica" class="img-fluid rounded shadow">
+        <img
+          src="{% static 'img/servicios.jpg' %}"
+          alt="Servicios de asesoría gastronómica"
+          class="img-fluid rounded shadow"
+        />
       </div>
       <div class="col-lg-6">
         <h1 class="font-heading mb-3">¿Qué te ofrecemos?</h1>
-        <p class="lead">Todo lo que tu negocio gastronómico necesita para funcionar mejor, crecer y diferenciarse.</p>
-        <p>Desde la cocina hasta la administración, te brindamos soluciones integrales con una mirada profesional, honesta y estratégica.</p>
-        <p>Nos adaptamos a tu realidad y te acompañamos en cada paso. Porque tu inversión merece dar frutos.</p>
-        <a href="#contactModal" data-bs-toggle="modal" class="btn btn-gold mt-3">Quiero potenciar mi negocio</a>
+        <p class="lead">
+          Todo lo que tu negocio gastronómico necesita para funcionar mejor,
+          crecer y diferenciarse.
+        </p>
+        <p>
+          Desde la cocina hasta la administración, te brindamos soluciones
+          integrales con una mirada profesional, honesta y estratégica.
+        </p>
+        <p>
+          Nos adaptamos a tu realidad y te acompañamos en cada paso. Porque tu
+          inversión merece dar frutos.
+        </p>
+        <a href="#contactModal" data-bs-toggle="modal" class="btn btn-gold mt-3"
+          >Quiero potenciar mi negocio</a
+        >
       </div>
     </div>
-<div class="row gy-4">
-    <div class="col-md-4">
-        <a href="#" class="text-decoration-none text-dark card-link-wrapper" data-bs-toggle="modal" data-bs-target="#modal-diagnostico">
-            <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body">
-                    <i class="bi bi-clipboard-data display-4 text-gold mb-3"></i>
-                    <h5 class="card-title font-heading">Diagnóstico Integral</h5>
-                    <p class="card-text">Analizamos tu negocio de punta a punta para detectar oportunidades, errores y puntos de mejora.</p>
-                </div>
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <a
+          href="#"
+          class="text-decoration-none text-dark card-link-wrapper"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-diagnostico"
+        >
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+              <i class="bi bi-clipboard-data display-4 text-gold mb-3"></i>
+              <h5 class="card-title font-heading">Diagnóstico Integral</h5>
+              <p class="card-text">
+                Analizamos tu negocio de punta a punta para detectar
+                oportunidades, errores y puntos de mejora.
+              </p>
             </div>
+          </div>
         </a>
-    </div>
-    <div class="col-md-4">
-        <a href="#" class="text-decoration-none text-dark card-link-wrapper" data-bs-toggle="modal" data-bs-target="#modal-capacitacion">
-            <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body">
-                    <i class="bi bi-people display-4 text-gold mb-3"></i>
-                    <h5 class="card-title font-heading">Capacitación de Personal</h5>
-                    <p class="card-text">Entrenamos a tu equipo en cocina, salón y atención para elevar la experiencia del cliente.</p>
-                </div>
+      </div>
+      <div class="col-md-4">
+        <a
+          href="#"
+          class="text-decoration-none text-dark card-link-wrapper"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-capacitacion"
+        >
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+              <i class="bi bi-people display-4 text-gold mb-3"></i>
+              <h5 class="card-title font-heading">Capacitación de Personal</h5>
+              <p class="card-text">
+                Entrenamos a tu equipo en cocina, salón y atención para elevar
+                la experiencia del cliente.
+              </p>
             </div>
+          </div>
         </a>
-    </div>
-    <div class="col-md-4">
-        <a href="#" class="text-decoration-none text-dark card-link-wrapper" data-bs-toggle="modal" data-bs-target="#modal-manuales">
-            <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body">
-                    <i class="bi bi-journal-check display-4 text-gold mb-3"></i>
-                    <h5 class="card-title font-heading">Estandarización y Manuales</h5>
-                    <p class="card-text">Creamos procedimientos claros para que tu negocio funcione con orden, calidad y consistencia.</p>
-                </div>
+      </div>
+      <div class="col-md-4">
+        <a
+          href="#"
+          class="text-decoration-none text-dark card-link-wrapper"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-manuales"
+        >
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+              <i class="bi bi-journal-check display-4 text-gold mb-3"></i>
+              <h5 class="card-title font-heading">
+                Estandarización y Manuales
+              </h5>
+              <p class="card-text">
+                Creamos procedimientos claros para que tu negocio funcione con
+                orden, calidad y consistencia.
+              </p>
             </div>
+          </div>
         </a>
-    </div>
-    <div class="col-md-4">
-        <a href="#" class="text-decoration-none text-dark card-link-wrapper" data-bs-toggle="modal" data-bs-target="#modal-proveedores">
-            <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body">
-                    <i class="bi bi-bag-check display-4 text-gold mb-3"></i>
-                    <h5 class="card-title font-heading">Gestión de Proveedores</h5>
-                    <p class="card-text">Te conectamos con proveedores confiables, con buenas condiciones y alineados a tus necesidades.</p>
-                </div>
+      </div>
+      <div class="col-md-4">
+        <a
+          href="#"
+          class="text-decoration-none text-dark card-link-wrapper"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-proveedores"
+        >
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+              <i class="bi bi-bag-check display-4 text-gold mb-3"></i>
+              <h5 class="card-title font-heading">Gestión de Proveedores</h5>
+              <p class="card-text">
+                Te conectamos con proveedores confiables, con buenas condiciones
+                y alineados a tus necesidades.
+              </p>
             </div>
+          </div>
         </a>
-    </div>
-    <div class="col-md-4">
-        <a href="#" class="text-decoration-none text-dark card-link-wrapper" data-bs-toggle="modal" data-bs-target="#modal-aperturas">
-            <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body">
-                    <i class="bi bi-house-gear display-4 text-gold mb-3"></i>
-                    <h5 class="card-title font-heading">Aperturas y Puestas a Punto</h5>
-                    <p class="card-text">Desde cero o para relanzarte: creamos una operación rentable, coherente y lista para funcionar.</p>
-                </div>
+      </div>
+      <div class="col-md-4">
+        <a
+          href="#"
+          class="text-decoration-none text-dark card-link-wrapper"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-aperturas"
+        >
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+              <i class="bi bi-house-gear display-4 text-gold mb-3"></i>
+              <h5 class="card-title font-heading">
+                Aperturas y Puestas a Punto
+              </h5>
+              <p class="card-text">
+                Desde cero o para relanzarte: creamos una operación rentable,
+                coherente y lista para funcionar.
+              </p>
             </div>
+          </div>
         </a>
-    </div>
-    <div class="col-md-4">
-        <a href="#" class="text-decoration-none text-dark card-link-wrapper" data-bs-toggle="modal" data-bs-target="#modal-higiene">
-            <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body">
-                    <i class="bi bi-shield-check display-4 text-gold mb-3"></i>
-                    <h5 class="card-title font-heading">Higiene y Seguridad</h5>
-                    <p class="card-text">Asesoría y formación en seguridad alimentaria, manipulación y normativas legales.</p>
-                </div>
+      </div>
+      <div class="col-md-4">
+        <a
+          href="#"
+          class="text-decoration-none text-dark card-link-wrapper"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-higiene"
+        >
+          <div class="card h-100 shadow-sm border-0 text-center">
+            <div class="card-body">
+              <i class="bi bi-shield-check display-4 text-gold mb-3"></i>
+              <h5 class="card-title font-heading">Higiene y Seguridad</h5>
+              <p class="card-text">
+                Asesoría y formación en seguridad alimentaria, manipulación y
+                normativas legales.
+              </p>
             </div>
+          </div>
         </a>
+      </div>
     </div>
-</div>
 
-<div class="modal fade" id="modal-diagnostico" tabindex="-1" aria-labelledby="modalDiagnosticoLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-heading" id="modalDiagnosticoLabel">Diagnóstico Integral 360°</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Realizamos una inmersión completa en tu negocio. Nuestro diagnóstico no es una simple auditoría, es una radiografía estratégica que analiza:</p>
-        <ul>
-            <li><strong>Análisis Financiero:</strong> Estructura de costos, rentabilidad por plato, punto de equilibrio y flujo de caja.</li>
-            <li><strong>Operaciones:</strong> Eficiencia en cocina y salón, tiempos de servicio, y organización de los espacios de trabajo.</li>
-            <li><strong>Producto y Menú:</strong> Ingeniería de menú, popularidad vs. rentabilidad, y coherencia con el concepto de marca.</li>
-            <li><strong>Equipo Humano:</strong> Roles, responsabilidades, clima laboral y nivel de capacitación.</li>
-        </ul>
-        <p>El resultado es un informe claro con un plan de acción priorizado para atacar los puntos críticos y potenciar las fortalezas de inmediato.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <div
+      class="modal fade"
+      id="modal-diagnostico"
+      tabindex="-1"
+      aria-labelledby="modalDiagnosticoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-heading" id="modalDiagnosticoLabel">
+              Diagnóstico Integral 360°
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Realizamos una inmersión completa en tu negocio. Nuestro
+              diagnóstico no es una simple auditoría, es una radiografía
+              estratégica que analiza:
+            </p>
+            <ul>
+              <li>
+                <strong>Análisis Financiero:</strong> Estructura de costos,
+                rentabilidad por plato, punto de equilibrio y flujo de caja.
+              </li>
+              <li>
+                <strong>Operaciones:</strong> Eficiencia en cocina y salón,
+                tiempos de servicio, y organización de los espacios de trabajo.
+              </li>
+              <li>
+                <strong>Producto y Menú:</strong> Ingeniería de menú,
+                popularidad vs. rentabilidad, y coherencia con el concepto de
+                marca.
+              </li>
+              <li>
+                <strong>Equipo Humano:</strong> Roles, responsabilidades, clima
+                laboral y nivel de capacitación.
+              </li>
+            </ul>
+            <p>
+              El resultado es un informe claro con un plan de acción priorizado
+              para atacar los puntos críticos y potenciar las fortalezas de
+              inmediato.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div
+      class="modal fade"
+      id="modal-capacitacion"
+      tabindex="-1"
+      aria-labelledby="modalCapacitacionLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-heading" id="modalCapacitacionLabel">
+              Capacitación de Personal
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Un equipo motivado y bien entrenado es el motor de cualquier
+              restaurante exitoso. Nuestros programas de capacitación son
+              prácticos, personalizados y se enfocan en:
+            </p>
+            <ul>
+              <li>
+                <strong>Técnicas de Venta y Atención al Cliente:</strong>
+                Convertimos a tus mozos en asesores gastronómicos que aumentan
+                el ticket promedio y fidelizan clientes.
+              </li>
+              <li>
+                <strong>Liderazgo para Mandos Medios:</strong> Formamos a tus
+                jefes de cocina, gerentes y encargados para que lideren con
+                eficacia, resuelvan conflictos y motiven a sus equipos.
+              </li>
+              <li>
+                <strong>Eficiencia en Cocina:</strong> Workshops sobre control
+                de mermas, optimización de la mise en place y técnicas de
+                cocción modernas.
+              </li>
+              <li>
+                <strong>Cohesión y Trabajo en Equipo:</strong> Dinámicas
+                grupales para mejorar la comunicación entre el salón y la
+                cocina, creando un ambiente de trabajo positivo y productivo.
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modal-manuales"
+      tabindex="-1"
+      aria-labelledby="modalManualesLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-heading" id="modalManualesLabel">
+              Estandarización y Manuales de Procedimiento
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              La consistencia es clave para la reputación y la rentabilidad.
+              Creamos la "biblia" de tu negocio, documentando todos los procesos
+              para que la calidad nunca dependa del azar.
+            </p>
+            <ul>
+              <li>
+                <strong>Manual de Recetas (Recetario Maestro):</strong>
+                Estandarización de cada plato con gramajes, procedimientos,
+                escandallos y fotos de emplatado.
+              </li>
+              <li>
+                <strong>Manual de Operaciones del Salón:</strong> Protocolos de
+                bienvenida, toma de pedidos, manejo de quejas y cierre de caja.
+              </li>
+              <li>
+                <strong>Manual de Apertura y Cierre:</strong> Checklists
+                detallados para asegurar que el local esté siempre en perfectas
+                condiciones.
+              </li>
+              <li>
+                <strong>Manual de Puestos:</strong> Definición clara de roles,
+                responsabilidades y tareas para cada miembro del equipo.
+              </li>
+            </ul>
+            <p>
+              Con estos manuales, facilitas la capacitación de nuevos empleados,
+              garantizas una calidad constante y tu negocio puede funcionar
+              eficientemente incluso cuando no estás presente.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modal-proveedores"
+      tabindex="-1"
+      aria-labelledby="modalProveedoresLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-heading" id="modalProveedoresLabel">
+              Gestión de Proveedores
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Una buena gestión de compras puede aumentar tu rentabilidad hasta
+              en un 15%. Nos encargamos de construir y optimizar tu cadena de
+              suministro.
+            </p>
+            <ul>
+              <li>
+                <strong>Negociación Estratégica:</strong> Renegociamos
+                contratos, buscamos acuerdos por volumen y mejoramos las
+                condiciones de pago.
+              </li>
+              <li>
+                <strong>Homologación de Proveedores:</strong> Creamos una
+                cartera de proveedores confiables que cumplen con tus estándares
+                de calidad, precio y logística.
+              </li>
+              <li>
+                <strong>Control de Recepción:</strong> Implementamos protocolos
+                para verificar la calidad y cantidad de la mercadería recibida,
+                evitando pérdidas.
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modal-aperturas"
+      tabindex="-1"
+      aria-labelledby="modalAperturasLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-heading" id="modalAperturasLabel">
+              Aperturas y Puestas a Punto
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Lanzar un nuevo proyecto o revitalizar uno existente es un desafío
+              complejo. Te acompañamos en todo el proceso para asegurar un
+              lanzamiento exitoso y rentable.
+            </p>
+            <ul>
+              <li>
+                <strong>Desarrollo de Concepto:</strong> Desde el naming hasta
+                el diseño del menú, creamos una propuesta de valor sólida y
+                diferenciada.
+              </li>
+              <li>
+                <strong>Plan de Negocio:</strong> Proyecciones financieras,
+                análisis de mercado y estrategia de marketing para convencer a
+                inversores y guiar tus decisiones.
+              </li>
+              <li>
+                <strong>Layout y Equipamiento:</strong> Diseñamos flujos de
+                trabajo eficientes y te asesoramos en la compra del equipamiento
+                adecuado.
+              </li>
+              <li>
+                <strong>Lanzamiento:</strong> Coordinamos la selección de
+                personal, la marcha blanca y las acciones de marketing
+                iniciales.
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modal-higiene"
+      tabindex="-1"
+      aria-labelledby="modalHigieneLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title font-heading" id="modalHigieneLabel">
+              Higiene y Seguridad Alimentaria (BPM & HACCP)
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              La seguridad alimentaria no es negociable. Protege a tus clientes
+              y tu reputación con nuestros planes de higiene y normativas.
+            </p>
+            <ul>
+              <li>
+                <strong>Implementación de BPM:</strong> Te guiamos en la
+                aplicación de las Buenas Prácticas de Manufactura en todas las
+                áreas de tu operación.
+              </li>
+              <li>
+                <strong
+                  >Análisis de Peligros y Puntos Críticos de Control
+                  (HACCP):</strong
+                >
+                Identificamos y controlamos los riesgos alimentarios, creando un
+                sistema preventivo robusto.
+              </li>
+              <li>
+                <strong>Capacitación Certificada:</strong> Ofrecemos cursos de
+                manipulación de alimentos para todo tu personal, cumpliendo con
+                las normativas legales vigentes.
+              </li>
+              <li>
+                <strong>Auditorías y Preparación para Inspecciones:</strong> Te
+                preparamos para que superes cualquier inspección sanitaria con
+                tranquilidad y confianza.
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock content %}
   </div>
-</div>
-
-<div class="modal fade" id="modal-capacitacion" tabindex="-1" aria-labelledby="modalCapacitacionLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-heading" id="modalCapacitacionLabel">Capacitación de Personal</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Un equipo motivado y bien entrenado es el motor de cualquier restaurante exitoso. Nuestros programas de capacitación son prácticos, personalizados y se enfocan en:</p>
-        <ul>
-          <li><strong>Técnicas de Venta y Atención al Cliente:</strong> Convertimos a tus mozos en asesores gastronómicos que aumentan el ticket promedio y fidelizan clientes.</li>
-          <li><strong>Liderazgo para Mandos Medios:</strong> Formamos a tus jefes de cocina, gerentes y encargados para que lideren con eficacia, resuelvan conflictos y motiven a sus equipos.</li>
-          <li><strong>Eficiencia en Cocina:</strong> Workshops sobre control de mermas, optimización de la mise en place y técnicas de cocción modernas.</li>
-          <li><strong>Cohesión y Trabajo en Equipo:</strong> Dinámicas grupales para mejorar la comunicación entre el salón y la cocina, creando un ambiente de trabajo positivo y productivo.</li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-manuales" tabindex="-1" aria-labelledby="modalManualesLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-heading" id="modalManualesLabel">Estandarización y Manuales de Procedimiento</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>La consistencia es clave para la reputación y la rentabilidad. Creamos la "biblia" de tu negocio, documentando todos los procesos para que la calidad nunca dependa del azar.</p>
-        <ul>
-          <li><strong>Manual de Recetas (Recetario Maestro):</strong> Estandarización de cada plato con gramajes, procedimientos, escandallos y fotos de emplatado.</li>
-          <li><strong>Manual de Operaciones del Salón:</strong> Protocolos de bienvenida, toma de pedidos, manejo de quejas y cierre de caja.</li>
-          <li><strong>Manual de Apertura y Cierre:</strong> Checklists detallados para asegurar que el local esté siempre en perfectas condiciones.</li>
-          <li><strong>Manual de Puestos:</strong> Definición clara de roles, responsabilidades y tareas para cada miembro del equipo.</li>
-        </ul>
-        <p>Con estos manuales, facilitas la capacitación de nuevos empleados, garantizas una calidad constante y tu negocio puede funcionar eficientemente incluso cuando no estás presente.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-proveedores" tabindex="-1" aria-labelledby="modalProveedoresLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-heading" id="modalProveedoresLabel">Gestión de Proveedores</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Una buena gestión de compras puede aumentar tu rentabilidad hasta en un 15%. Nos encargamos de construir y optimizar tu cadena de suministro.</p>
-        <ul>
-            <li><strong>Negociación Estratégica:</strong> Renegociamos contratos, buscamos acuerdos por volumen y mejoramos las condiciones de pago.</li>
-            <li><strong>Homologación de Proveedores:</strong> Creamos una cartera de proveedores confiables que cumplen con tus estándares de calidad, precio y logística.</li>
-            <li><strong>Control de Recepción:</strong> Implementamos protocolos para verificar la calidad y cantidad de la mercadería recibida, evitando pérdidas.</li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-aperturas" tabindex="-1" aria-labelledby="modalAperturasLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-heading" id="modalAperturasLabel">Aperturas y Puestas a Punto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Lanzar un nuevo proyecto o revitalizar uno existente es un desafío complejo. Te acompañamos en todo el proceso para asegurar un lanzamiento exitoso y rentable.</p>
-        <ul>
-            <li><strong>Desarrollo de Concepto:</strong> Desde el naming hasta el diseño del menú, creamos una propuesta de valor sólida y diferenciada.</li>
-            <li><strong>Plan de Negocio:</strong> Proyecciones financieras, análisis de mercado y estrategia de marketing para convencer a inversores y guiar tus decisiones.</li>
-            <li><strong>Layout y Equipamiento:</strong> Diseñamos flujos de trabajo eficientes y te asesoramos en la compra del equipamiento adecuado.</li>
-            <li><strong>Lanzamiento:</strong> Coordinamos la selección de personal, la marcha blanca y las acciones de marketing iniciales.</li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-higiene" tabindex="-1" aria-labelledby="modalHigieneLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-heading" id="modalHigieneLabel">Higiene y Seguridad Alimentaria (BPM & HACCP)</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>La seguridad alimentaria no es negociable. Protege a tus clientes y tu reputación con nuestros planes de higiene y normativas.</p>
-        <ul>
-            <li><strong>Implementación de BPM:</strong> Te guiamos en la aplicación de las Buenas Prácticas de Manufactura en todas las áreas de tu operación.</li>
-            <li><strong>Análisis de Peligros y Puntos Críticos de Control (HACCP):</strong> Identificamos y controlamos los riesgos alimentarios, creando un sistema preventivo robusto.</li>
-            <li><strong>Capacitación Certificada:</strong> Ofrecemos cursos de manipulación de alimentos para todo tu personal, cumpliendo con las normativas legales vigentes.</li>
-            <li><strong>Auditorías y Preparación para Inspecciones:</strong> Te preparamos para que superes cualquier inspección sanitaria con tranquilidad y confianza.</li>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-{% endblock content %}
+</section>
