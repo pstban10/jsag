@@ -91,6 +91,7 @@ venv/
 ENV/
 env.bak
 venv.bak
+client_secret_google.json
 
 # Spyder project settings
 .spyderproject
