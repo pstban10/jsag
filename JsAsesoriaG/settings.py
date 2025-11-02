@@ -20,6 +20,8 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[
 # CSRF
 CSRF_TRUSTED_ORIGINS = [
     "https://jsasesorias.up.railway.app",
+    "https://asesoriasjs.com",
+    "https://www.asesoriasjs.com"
 ]
 
 # Application definition
